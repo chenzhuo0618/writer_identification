@@ -1,0 +1,96 @@
+%function Extra the image feature by DWT
+function imagefeature=DWT_Extra_Feature(imagedata);
+
+imagedata=double(imagedata);
+feature=[];
+
+%%%GDD model extra the feature of high frequency
+[CA1,CH1,CV1,CD1]=dwt2(imagedata,'db2');
+[CA2,CH2,CV2,CD2]=dwt2(CA1,'db2');
+[CA3,CH3,CV3,CD3]=dwt2(CA2,'db2');
+
+[msize,nsize]=size(CA1);
+sh=[];sv=[];sd=[];
+
+for i=1:nsize
+    sh=[sh;CH1(:,i)];
+    sv=[sv;CV1(:,i)];
+    sd=[sd;CD1(:,i)];
+end
+[alpha,beta]=ggmle(sh);feature=[feature;alpha;beta];
+[alpha,beta]=ggmle(sv);feature=[feature;alpha;beta];
+[alpha,beta]=ggmle(sd);feature=[feature;alpha;beta];
+
+[msize,nsize]=size(CA2);
+sh=[];sv=[];sd=[];
+for i=1:nsize
+    sh=[sh;CH2(:,i)];
+    sv=[sv;CV2(:,i)];
+    sd=[sd;CD2(:,i)];
+end
+[alpha,beta]=ggmle(sh);feature=[feature;alpha;beta];
+[alpha,beta]=ggmle(sv);feature=[feature;alpha;beta];
+[alpha,beta]=ggmle(sd);feature=[feature;alpha;beta];
+
+% [msize,nsize]=size(CA3);
+% sh=[];sv=[];sd=[];
+
+% for i=1:nsize
+%     sh=[sh;CH3(:,i)];
+%     sv=[sv;CV3(:,i)];
+%     sd=[sd;CD3(:,i)];
+% end
+% [alpha,beta]=ggmle(sh);feature=[feature;alpha;beta];
+% [alpha,beta]=ggmle(sv);feature=[feature;alpha;beta];
+% [alpha,beta]=ggmle(sd);feature=[feature;alpha;beta];
+
+% %%% GMM model feature extra
+% [msize,nsize]=size(CA3);
+% wt=[];wt1=[];
+% for i=1:msize
+%     wt1=[wt1,CA3(i,:)];
+% end
+% wt=wt1';
+% 
+% gmix=gmm(1,2,'spherical');
+% 
+% a=max(max(CA3));b=min(min(CA3));
+% 
+% d=[];e=[];
+% for k=1:2
+%     c=(a-b)/(2+1)*k+b;
+%     d=[d;c];
+%     e=[e;0.01];
+%     gmix.centres=[d];
+%     gmix.covars=[e];
+% end
+% 
+% % options = foptions;
+% options(14) = 5;	% Just use 5 iterations of k-means in initialisation
+% 
+% gmix = gmminit(gmix, wt, options);
+% 
+% ht=[];
+% set(ht, 'string', 'M-step');
+% % options = foptions; 
+% options(14) = 1; % A single iteration
+% options(1) = -1; % Switch off all messages, including warning
+% 
+% gmix = gmmem(gmix, wt, options);
+% 
+% numiters = 9;
+% for n = 1 : numiters
+%   set(ht, 'string', 'E-step');
+%   post = gmmpost(gmix, wt);
+%   set(ht, 'string', 'M-step');
+%   [gmix, options] = gmmem(gmix, wt, options);
+%   %aaa= gmix.covars
+% end
+% 
+% p=gmmpak(gmix);
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% feature=[feature;p'];
+
+imagefeature=feature;
+
