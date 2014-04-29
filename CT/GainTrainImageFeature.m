@@ -13,7 +13,7 @@ for ImageDataId=1:20
     temp=load(data_name);
     imagedata=temp.mm;
   
-    featurevocter=SH_Extra_Feature(imagedata);
+    featurevocter=CT_Extra_Feature(imagedata);
     FeatureMatrix=[FeatureMatrix,featurevocter];
 end 
 

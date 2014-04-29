@@ -55,8 +55,8 @@ classnum=50;
 %pdata_path='D:\picturelibrary\caohai\writing\writing\轻度\practiceimagebase';%cut库
 %tdata_path='D:\picturelibrary\caohai\writing\writing\轻度\testimagebase';%cut库
 %曹海哥正常
-pdata_path='G:\writing\fixed\正常\mine\mat\practiceimagebase';%cut库
-tdata_path='G:\writing\fixed\正常\mine\mat\testimagebase';%cut库
+pdata_path='G:\writing\fixed\重度褶皱\practiceimagebase';%cut库
+tdata_path='G:\writing\fixed\重度褶皱\testimagebase';%cut库
 %曹海哥重度
 %pdata_path='D:\picturelibrary\caohai\writing\writing\重度\seprate\practiceimagebase';%cut库
 %tdata_path='D:\picturelibrary\caohai\writing\writing\重度\seprate\testimagebase';%cut库
