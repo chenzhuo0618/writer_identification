@@ -2,14 +2,14 @@
 function imagefeature=NSCT_Extra_Feature(imagedata)
 pfilter = 'maxflat' ;              % Pyramidal filter
 dfilter = 'dmaxflat7' ;              % Directional filter
-nlevels=[3,3];
-y = nsctdec( double(imagedata), nlevels, dfilter, pfilter );
+nlevels=[2,3,4];
+y = nsctdec(double(imagedata), nlevels, dfilter, pfilter );
 
 %  x=double(imagedata);
 %  y=pdfbdec(x, pfilt, dfilt, nlevs);
  feature=[];
    
-  for j=2:3
+  for j=2:4
       xhi_dir=y{1,j};
       for k=1:length(xhi_dir)
           b=xhi_dir{1,k};

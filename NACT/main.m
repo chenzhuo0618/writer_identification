@@ -1,43 +1,30 @@
 tic;
-%pdata_path='D:\zhubeibei\practiceimagebase';
-classnum=1;
-%朱贝贝的库
-%pdata_path='C:\Program Files\MATLAB\R2012b\bin\workplace\zbb\practiceimagebase';
-%tdata_path='C:\Program Files\MATLAB\R2012b\bin\workplace\zbb\testimagebase';
-%pdata_path='D:\picturelibrary\handwriting\practiceimagebase';%cut库
-%tdata_path='D:\picturelibrary\handwriting\testimagebase';%cut库
-%预处理库（曹海的库）
-%pdata_path='D:\picturelibrary\caohai\practiceimagebase';%cut库
-%tdata_path='D:\picturelibrary\caohai\testimagebase';%cut库
-%曹海哥轻度
-%pdata_path='D:\picturelibrary\caohai\writing\writing\轻度\practiceimagebase';%cut库
-%tdata_path='D:\picturelibrary\caohai\writing\writing\轻度\testimagebase';%cut库
-%曹海哥正常
-pdata_path='E:\4_30\data\正常\mat\practiceimagebase';%cut库
-tdata_path='E:\4_30\data\正常\mat\testimagebase';%cut库
+pdata_path='G:\writing\fixed\重度褶皱\practiceimagebase';
 %%pdata_path='G:\writing\signal\mat';
-%曹海哥重度
-%pdata_path='D:\picturelibrary\caohai\writing\writing\重度\seprate\practiceimagebase';%cut库
-%tdata_path='D:\picturelibrary\caohai\writing\writing\重度\seprate\testimagebase';%cut库
+classnum=50;
+
 
 %获取训练样本的类特征
- FeatureTrainMatrix=[];
-% 
+FeatureTrainMatrix=[];
+
 for classid=1:classnum
-     if(classid<10)
-       class_name=strcat(pdata_path,'\g0',num2str(classid));
-       ClassFeatureMatrix=GainTrainImageFeature(class_name);
-   else
+    
+    if(classid<10)
+        class_name=strcat(pdata_path,'\g0',num2str(classid));
+        ClassFeatureMatrix=GainTrainImageFeature(class_name);
+    else
         class_name=strcat(pdata_path,'\g',num2str(classid));
         ClassFeatureMatrix=GainTrainImageFeature(class_name);
     end 
     FeatureTrainMatrix=[FeatureTrainMatrix,ClassFeatureMatrix];
 end
 
-%tdata_path='D:\zhubeibei\testimagebase';
+tdata_path='G:\writing\fixed\重度褶皱\testimagebase';
 
 %获取测试样本所有的图像特征
 FeatureMatrix=[];
+
+
 
 for classid=1:classnum
     if(classid<10)
@@ -87,5 +74,5 @@ end
 SortingResult=sort_KLDvalue(KLDArray);
 
 %%compute the average retrieval rate
-[AverRetrievalRate4,RR4]=Gain_AverageRetrievalRate(SortingResult)
+[AverRetrievalRate1,RR1]=Gain_AverageRetrievalRate(SortingResult)
 toc;
