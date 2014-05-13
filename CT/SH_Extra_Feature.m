@@ -1,9 +1,9 @@
 function [ imagefeature ] = SH_Extract_Feature( imagedata )
 %SH_EXTRACT_FEATURE Summary of this function goes here
 %   Detailed explanation goes here
- pfilt='pkva';
- dfilt='pkva';
- nlevs=[2,3];
+%  pfilt='pkva';
+%  dfilt='pkva';
+%  nlevs=[2,3];
 [sizeX,sizeY]=size(imagedata);
 useGPU=0;
  x=double(imagedata);

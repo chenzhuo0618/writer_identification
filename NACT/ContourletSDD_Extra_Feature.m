@@ -1,7 +1,7 @@
 function imagefeature=ContourletSDD_Extra_Feature(imagedata)
 
  dfilt = 'pkva';
- nlev_SD = [2 3];
+ nlev_SD = [2 3 4];
  smooth_func = @rcos;
  Pyr_mode = 2; 
 
@@ -9,7 +9,7 @@ function imagefeature=ContourletSDD_Extra_Feature(imagedata)
  y = ContourletSDDec(x, nlev_SD, Pyr_mode, smooth_func, dfilt);
  feature=[];
    
-  for j=2:3
+  for j=2:4
      xhi_dir=y{j,1};
      for k=1:length(xhi_dir)
          b=xhi_dir{1,k};

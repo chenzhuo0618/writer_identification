@@ -1,4 +1,4 @@
-data_path='E:\4_30\data\one\正常\mat';%cut库
+data_path='E:\4_30\data\one\重度褶皱\mat';%cut库
 FeatureTrainMatrix=[];
 type='pdtdfb';
 %type='nact' or 'ct' or 'nsct' or 'shearlet' and others
@@ -13,9 +13,9 @@ end
 
 [msize,nsize]=size(ClassFeatureMatrix)
 %mean
-meanalpha=mean(ClassFeatureMatrix(1:2:nsize))
-meanbeta=mean(ClassFeatureMatrix(2:2:nsize))
+meanalpha=mean(ClassFeatureMatrix(1:2:msize))
+meanbeta=mean(ClassFeatureMatrix(2:2:msize))
 %var
-varalpha=var(ClassFeatureMatrix(1:2:nsize))
-varbeta=var(ClassFeatureMatrix(2:2:nsize))
+varalpha=var(ClassFeatureMatrix(1:2:msize))
+varbeta=var(ClassFeatureMatrix(2:2:msize))
 

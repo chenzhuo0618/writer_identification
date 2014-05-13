@@ -10,9 +10,9 @@ for ImageDataId=1:20
         data_name=strcat(class_name,'01',num2str(ImageDataId),'.mat');
     end
     temp=load(data_name);
-    imagedata=temp.mm;
+    imagedata=double(temp.mm);
     %%imagedata=double(temp(1).heavy1);
-    featurevocter=PDTDFB_extra_texture_feature(imagedata);
+    featurevocter=NSCT_Extra_Feature(imagedata);
     FeatureMatrix=[FeatureMatrix,featurevocter];
     if(ImageDataId<10)
         data_name=strcat(class_name,'020',num2str(ImageDataId),'.mat');
@@ -20,17 +20,18 @@ for ImageDataId=1:20
         data_name=strcat(class_name,'02',num2str(ImageDataId),'.mat');
     end
     temp=load(data_name);
-    imagedata=temp.A;
+    imagedata=double(temp.A);
     %%imagedata=double(temp(1).heavy1);
-    featurevocter=PDTDFB_extra_texture_feature(imagedata);
+    featurevocter=NSCT_Extra_Feature(imagedata);
     FeatureMatrix=[FeatureMatrix,featurevocter];
 
 end 
 
 classvector=[];
 [msize,nsize]=size(FeatureMatrix);
-for i=1:msize
-   classvector=[classvector;mean(FeatureMatrix(i,:))];
+for i=1:nsize
+   classvector=[classvector;mean(FeatureMatrix(1:2:msize,i))];
+   classvector=[classvector;mean(FeatureMatrix(2:2:msize,i))];
 end
 
 ImageFeatureMatrix=classvector;

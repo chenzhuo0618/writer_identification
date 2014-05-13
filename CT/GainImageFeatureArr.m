@@ -14,7 +14,7 @@ for ImageDataId=1:20
     
     imagedata=temp.A;
 %   im=imresize(imagedata,0.25);    
-    imagefeature.featurevocter=CT_Extra_Feature(imagedata);
+    imagefeature.featurevocter=SH_Extra_Feature(imagedata);
     imagefeature.classid=classid;
     ImageFeatureMatrix=[ImageFeatureMatrix;imagefeature];
 end 

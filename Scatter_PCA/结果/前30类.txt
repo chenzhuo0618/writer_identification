@@ -1,0 +1,3 @@
+handwriting roto_trans_scatt_log_scale_avg with 36 training : 97.69 += 0.64 
+handwriting roto_trans_scatt_log_scale_avg with 48 training : 99.13 += 0.46 
+handwriting roto_trans_scatt_log_scale_avg with 60 training : 99.86 += 0.15 
