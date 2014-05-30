@@ -17,7 +17,6 @@
 
 function err = classif_err(labels,test_set,src)
 	truth = [src.objects(test_set).class];
-
 	if isfield(src,'cluster')
 		cluster = src.cluster;
 	else

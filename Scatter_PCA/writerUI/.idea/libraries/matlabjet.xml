@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="matlabjet">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../matlabjet/distrib/matlabjet.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
