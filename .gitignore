@@ -2,3 +2,6 @@
 *.png
 *.jpeg
 *.mat
+
+dataset/joint_use
+dataset/otheruse
