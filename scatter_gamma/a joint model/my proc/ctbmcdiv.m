@@ -9,7 +9,7 @@ p.addParamValue('debug',false,@islogical);
 p.parse(A,B,varargin{:});
 copulatype = p.Results.copula;
 margintype = p.Results.margin;
-margintype='Weibull'
+% margintype='Gamma'
 len = p.Results.len;
 debug = p.Results.debug;
 progname = 'ctbmcdiv';
@@ -36,6 +36,15 @@ switch(copulatype)
             end
             KL=KL+(KL1+KL2)/2;
         end
+    otherwise
+        sA = ctbsample(A,'margin',margintype,'copula',copulatype,'len',len, 'debug',debug);
+        sB = ctbsample(B,'margin',margintype,'copula',copulatype,'len',len, 'debug',debug);
+        % %
+        LL1 = ctbll(sA,A,margintype,copulatype);
+        LL2 = ctbll(sA,B,margintype,copulatype);
+        LL3 = ctbll(sB,A,margintype,copulatype);
+        LL4 = ctbll(sB,B,margintype,copulatype);
+        KL = (abs(LL1-LL2)+abs(LL4-LL3))/2;
 end
 %
 %      if (debug)

@@ -15,8 +15,8 @@ p.addParamValue('models',{},@iscell);
 % Add parameter-value pair argument to inputParser schema
 p.addParamValue('stage','genmodel',@(x)any(strcmpi(x,{'genmodel','runsim'}))); % strcmpi比较结果相同则1，any不全0则1，这个验证器为真则通过验证，否则抛出错误
 % 默认选项‘genmodel’，x是输入参数，要和后面的选项进行匹配
-p.addParamValue('margin', 'Gamma', @(x)any(strcmpi(x,{'Weibull','Gamma'})));
-% p.addParamValue('margin', 'Weibull', @(x)any(strcmpi(x,{'Weibull','Gamma'})));
+% p.addParamValue('margin', 'Gamma', @(x)any(strcmpi(x,{'Weibull','Gamma'})));
+p.addParamValue('margin', 'Weibull', @(x)any(strcmpi(x,{'Weibull','Gamma'})));
 p.addParamValue('copula', 'none', @(x)any(strcmpi(x,{'Gaussian','t','none'})));
 p.addParamValue('level',3,@(x)x>=1);
 p.addParamValue('samples',100,@(x)x>=100);

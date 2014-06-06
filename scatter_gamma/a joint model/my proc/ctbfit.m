@@ -24,13 +24,13 @@ function model = ctbfit(data,varargin)
                 param = wblfit(col); % fit Weibull parameters estimate
                 model.margins(i,:) = [param(1) param(2)];
 %               wblcdf(col,param(1),param(2))%%%%%是一个列向量
-                model.inttrans = [model.inttrans wblcdf(col,param(1),param(2))];
-                model.emp = [model.emp empiricalCDF(col)];
+%                 model.inttrans = [model.inttrans wblcdf(col,param(1),param(2))];
+%                 model.emp = [model.emp empiricalCDF(col)];
             case 'Gamma'
                 param = gamfit(col);
                 model.margins(i,:) = [param(1) param(2)];
-                model.emp = [model.emp empiricalCDF(col)];
-                model.inttrans = [model.inttrans gamcdf(col,param(1),param(2))];
+%                 model.emp = [model.emp empiricalCDF(col)];
+%                 model.inttrans = [model.inttrans gamcdf(col,param(1),param(2))];
         end
     end
 %     if (debug)

@@ -31,7 +31,7 @@ t0=clock;
 % data=stex_data(Jmax,maxclasses);
 %  path_to_db = 'D:\2_26\dataset\tmp';
 %  path_to_db='E:\Jay\cvpr2013\umd dataset';
-path_to_db='F:\dataset\3_28\smalltemp';
+path_to_db='E:\Jay\project\writer_identification\dataset\joint_use\dataset\light';
 % path_to_db='E:\Jay\project\writer_identification\dataset\joint_use\dataset\light';
 src = kthtips_src(path_to_db);
 c_t0=etime(clock,t0);
@@ -54,7 +54,7 @@ t3=clock;
 div = div + div';
 
 % 得到最终的检索率(取40幅最匹配的)
-[r, rs,or]=evalir(generic_rrate(div,10,'ascend'))
+[r, rs,or]=evalir(generic_rrate(div,40,'ascend'))
 c_t3=etime(clock,t3);
 
  
