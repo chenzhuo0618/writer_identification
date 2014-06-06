@@ -31,18 +31,21 @@ t0=clock;
 % data=stex_data(Jmax,maxclasses);
 %  path_to_db = 'D:\2_26\dataset\tmp';
 %  path_to_db='E:\Jay\cvpr2013\umd dataset';
-path_to_db='D:\2_26\dataset\normal';
+path_to_db='F:\dataset\3_28\smalltemp';
+% path_to_db='E:\Jay\project\writer_identification\dataset\joint_use\dataset\light';
 src = kthtips_src(path_to_db);
 c_t0=etime(clock,t0);
 t1=clock;
 
 % 为每幅子图计算一个model
-models = icip09(src,'stage','genmodel','copula','Gaussian','samples',100,'debug',true);   
+models = icip09(src,'stage','genmodel','copula','none','samples',100,'debug',true);  
+% models = icip09(src,'stage','genmodel','copula','Gaussian','samples',100,'debug',true);  
+% models = icip09(src,'stage','genmodel','copula','t','samples',100,'debug',true);   
 % model = icip09(data,'stage','genmodel','copula','t','samples',500,'debug',true); 
 % 计算每幅子图与所有子图的距离
 c_t1=etime(clock,t1);
 t2=clock;
-div = icip09(src,'stage','runsim','models',models,'samples',100,'debug',true);
+div = icip09(src,'stage','runsim','models',models,'samples',100,'debug',true,'copula','none');
 c_t2=etime(clock,t2);
 
 % save div;
@@ -51,7 +54,7 @@ t3=clock;
 div = div + div';
 
 % 得到最终的检索率(取40幅最匹配的)
-[r, rs,or]=evalir(generic_rrate(div,24,'ascend'))
+[r, rs,or]=evalir(generic_rrate(div,10,'ascend'))
 c_t3=etime(clock,t3);
 
  
