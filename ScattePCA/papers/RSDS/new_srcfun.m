@@ -13,8 +13,6 @@ function roto_trans_scatt_multiscale_log_sp_avg = new_srcfun(fun, src,fmt,M)
         tmp = imreadBW(filename);
         cell_out{1} = fun(tmp);
         clear tmp;
-
-        %###############对每幅图像单独变换直到最后形成特征，以节省内存和时间开支
         
         f_fun = @(Sx)(mean(mean(log(format_scat(Sx,fmt,M)),2),3));
         roto_trans_scatt_multiscale_log_sp_avg{k} = ...
