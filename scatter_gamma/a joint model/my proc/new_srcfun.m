@@ -32,10 +32,10 @@ for k = 1:length(src.files)
     %         roto_trans_scatt_multiscale_log_sp_avg{k} = cellfun_monitor(f_fun, cell_out);
     
     
-    tm0 = tic;
-    time_elapsed = etime(clock, time_start);
-    estimated_time_left = time_elapsed * (length(src.files)-k) / k;
-    fprintf('calculated features for %s. (%.2fs)\n',src.files{k},toc(tm0));
-    fprintf('%d / %d : estimated time left %d seconds\n',k,length(src.files),floor(estimated_time_left));
+%     tm0 = tic;
+%     time_elapsed = etime(clock, time_start);
+%     estimated_time_left = time_elapsed * (length(src.files)-k) / k;
+%     fprintf('calculated features for %s. (%.2fs)\n',src.files{k},toc(tm0));
+%     fprintf('%d / %d : estimated time left %d seconds\n',k,length(src.files),floor(estimated_time_left));
 end
 end

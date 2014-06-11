@@ -21,7 +21,7 @@ function model = ctbfit(data,varargin)
         col = data(:,i);
         switch margintype
             case 'Weibull'
-                param = wblfit(col); % fit Weibull parameters estimate
+                param = wblfit(col+eps); % fit Weibull parameters estimate
                 model.margins(i,:) = [param(1) param(2)];
 %               wblcdf(col,param(1),param(2))%%%%%是一个列向量
 %                 model.inttrans = [model.inttrans wblcdf(col,param(1),param(2))];

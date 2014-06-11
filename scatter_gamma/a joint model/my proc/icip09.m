@@ -60,11 +60,12 @@ switch stage                 % ≤Ω÷Ë
         %  testt=clock;
         %  x=imreadBW(filename);
         foptions.J=3;
-        foptions.L=8;
+        foptions.L=4;
         foptions.Q=1;
         soptions.M=2;
+%         soptions.J=3;
         soptions.oversampling = 2;
-        Wop=wavelet_factory_2d([512,512],foptions,soptions);
+        Wop=wavelet_factory_3d([526 526],foptions,soptions);
         %         Wop = wavelet_factory_3d_pyramid(filt_opt, filt_rot_opt,scat_opt);
         
         % a function handle that compute scattering given an image
