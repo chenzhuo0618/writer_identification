@@ -72,8 +72,19 @@ function [u,s] = sig_pca(x,M)
 	    s = abs(diag(s)/sqrt(size(x,2)-1)).^2;
 	else
 		% Otherwise, calculate all the principal components.
-		[u,d] = eig(cov(x'));
-		[s,ind] = sort(diag(d),'descend');
-		u = u(:,ind);
+
+        s = size(x);
+        s = max(s(1),s(2));
+        lambda = 1./sqrt(s);
+        tol = 1e-7; % for ALM
+        maxIter = 1000; % for ALM
+        [A_hat E_hat iter] = inexact_alm_rpca(single(x), lambda, tol, maxIter);
+        
+        [s,ind]=sort(diag(A_hat),'descend');
+        
+       [u,d] = eig(cov(x'));
+% 		[s,ind] = sort(diag(d),'descend');
+        
+ 		u = u(:,ind);
 	end
 end

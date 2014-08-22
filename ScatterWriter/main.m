@@ -1,48 +1,6 @@
-clear;
-% picture_num=112;
-% gray_num=32;
-% picture_path='G:\赵正辉移交文件\朱贝贝移交程序1\Brodatztexture';
-% %%picture_path='G:\writing\正常\whole';
-% %%picture_path='G:\writing\fixed\正常\zbbs\whole';
-% subimage_id=0;
-% subimage_num=picture_num*16;
-% 
-% 
-% %%分割图库中每副图像成16个小图,对每副小图进行纹理特征的提取
-% feature_matrix=[];
-% imagename_id=zeros(1,subimage_num);
-% 
-% for i=1:picture_num
-%     
-%     picture_name=strcat(picture_path,'\D',num2str(i),'.gif');
-%     
-%     image=imread(picture_name);
-%     normal_image=imresize(image,[512,512]);
-%     
-%    feature_matrix=image_division_and_extra(normal_image,feature_matrix);
-%   
-%     
-%     for j=1:24
-%         subimage_id=subimage_id+1;
-%         imagename_id(subimage_id)=i;
-%     end
-%         
-% end
-
-%计算每两个子图的距离，衡量每两幅子图的相适度。并对所求得的所有相似度值按照参考
-%图进行排序，截取排序的前16副图。
-% %计算每两个子图的距离，衡量每两幅子图的相适度。
-
-
-% rr=rankpd(feature_matrix,24);       
-%       
-% [r, rs, or,mas] = evalir(rr, 100)
-
-
 tic;
 %pdata_path='D:\zhubeibei\practiceimagebase';
 classnum=50;
-
 %朱贝贝的库
 %pdata_path='C:\Program Files\MATLAB\R2012b\bin\workplace\zbb\practiceimagebase';
 %tdata_path='C:\Program Files\MATLAB\R2012b\bin\workplace\zbb\testimagebase';
@@ -55,15 +13,17 @@ classnum=50;
 %pdata_path='D:\picturelibrary\caohai\writing\writing\轻度\practiceimagebase';%cut库
 %tdata_path='D:\picturelibrary\caohai\writing\writing\轻度\testimagebase';%cut库
 %曹海哥正常
-pdata_path='E:\4_30\data\正常\mat\practiceimagebase';   %cut库
-tdata_path='E:\4_30\data\正常\mat\testimagebase';       %cut库
+pdata_path='G:\writing\fixed\正常\zbbs\mat\practiceimagebase';%cut库
+tdata_path='G:\writing\fixed\正常\zbbs\mat\testimagebase';%cut库
 %曹海哥重度
-%pdata_path='D:\picturelibrary\caohai\writing\writing\重度\seprate\practiceimagebase';   %cut库
-%tdata_path='D:\picturelibrary\caohai\writing\writing\重度\seprate\testimagebase';       %cut库
+%pdata_path='D:\picturelibrary\caohai\writing\writing\重度\seprate\practiceimagebase';%cut库
+%tdata_path='D:\picturelibrary\caohai\writing\writing\重度\seprate\testimagebase';%cut库
 
+%获取训练样本的类特征
 FeatureTrainMatrix=[];
 
 for classid=1:classnum
+    
     if(classid<10)
         class_name=strcat(pdata_path,'\g0',num2str(classid));
         ClassFeatureMatrix=GainTrainImageFeature(class_name);
@@ -99,6 +59,7 @@ for i=1:classnum
         KLMarrtrix(i,j).cid=FeatureMatrix(j,1).classid;
     end
 end
+
 %normal the subband kl distance array
 NorKLMarrtrix=normal_subkld_marrtrix(KLMarrtrix);
 
@@ -127,6 +88,3 @@ SortingResult=sort_KLDvalue(KLDArray);
 %%compute the average retrieval rate
 [AverRetrievalRate1,RR1]=Gain_AverageRetrievalRate(SortingResult)
 toc;
-
-
-
