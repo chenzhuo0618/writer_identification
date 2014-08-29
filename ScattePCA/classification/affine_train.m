@@ -40,12 +40,25 @@ function model = affine_train(db,train_set,opt)
 		
 		% Calculate centroid and all the principal components.
 		mu{k} = sig_mean(db.features(:,ind_feat));
-		v{k} = sig_pca(db.features(:,ind_feat),0);
+        x=db.features(:,ind_feat);
+        s = size(x);
+        s = max(s(1),s(2));
+        lambda = 1./sqrt(s);
+        tol = 1e-7; % for ALM
+        maxIter = 10000; % for ALM
+        [A_hat E_hat iter] = inexact_alm_rpca(single(x), lambda, tol, maxIter);
+        
+%         [s,ind]=sort(diag(A_hat),'descend');     
+       v{k}=A_hat;
+        
+% 		v{k} = sig_pca(db.features(:,ind_feat),0);
+% 
+% 		% Truncate principal components if they exceed the maximum dimension.
+% 		if size(v{k},2) > max(opt.dim)
+% 			v{k} = v{k}(:,1:max(opt.dim));
+% 		end
 
-		% Truncate principal components if they exceed the maximum dimension.
-		if size(v{k},2) > max(opt.dim)
-			v{k} = v{k}(:,1:max(opt.dim));
-		end
+
 	end
 	
 	% Prepare output.
@@ -73,17 +86,17 @@ function [u,s] = sig_pca(x,M)
 	else
 		% Otherwise, calculate all the principal components.
 
-        s = size(x);
-        s = max(s(1),s(2));
-        lambda = 1./sqrt(s);
-        tol = 1e-7; % for ALM
-        maxIter = 1000; % for ALM
-        [A_hat E_hat iter] = inexact_alm_rpca(single(x), lambda, tol, maxIter);
-        
-        [s,ind]=sort(diag(A_hat),'descend');
+%         s = size(x);
+%         s = max(s(1),s(2));
+%         lambda = 1./sqrt(s);
+%         tol = 1e-7; % for ALM
+%         maxIter = 1000; % for ALM
+%         [A_hat E_hat iter] = inexact_alm_rpca(single(x), lambda, tol, maxIter);
+%         
+%         [s,ind]=sort(diag(A_hat),'descend');
         
        [u,d] = eig(cov(x'));
-% 		[s,ind] = sort(diag(d),'descend');
+		[s,ind] = sort(diag(d),'descend');
         
  		u = u(:,ind);
 	end

@@ -55,8 +55,8 @@ function [out,meta] = format_scat(X,fmt,M)
 			'must be of the same resolution. Consider' ...
 			'using the ''order_table'' output format.']);
 		end
-% 		X = flatten_scat(X); % puts all layers together
-        X = flatten_scat2(X,M);
+		X = flatten_scat(X); % puts all layers together
+%         X = flatten_scat2(X,M);
 	elseif ~strcmp(fmt,'order_table')
 		error(['Unknown format. Available formats are ''raw'', ''table'''...
 		' or ''order_table''.']);
