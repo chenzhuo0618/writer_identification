@@ -19,7 +19,9 @@ addpath(genpath(pwd));
 options = struct;
 
 %%手写体图像集路径
-path_to_db = 'F:\dataset\3_28\smalltemp';
+% path_to_db = 'F:\dataset\3_28\normal';
+path_to_db='E:\Jay\project\writer_identification\dataset\joint_use\dataset\heavy';
+% path_to_db='F:\dataset\3_28\tmpheavy';
 src = kthtips_src(path_to_db);
 db_name = 'handwriting';
 
@@ -27,8 +29,7 @@ feature_name = 'roto_trans_scatt_log_scale_avg';
 
 %%手写体特征存储路径
 savepath = 'D:\2_26\手写体\roto_trans_scatt_log_scale_avg.mat'
-
-% grid_train = [36 48 60];% number of training for classification
+% grid_train = [10 15 20];% number of training for classification
 grid_train = [8]
 
 nb_split = 10; % number of split for classification
