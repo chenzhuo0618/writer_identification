@@ -36,7 +36,7 @@ function model = affine_train(db,train_set,opt)
 % % 		mu{k} = sig_mean(db.features(:,ind_feat));
 %         
 % %         x=db.features(:,ind_feat);
-%         x=double(db.features(:,ind_feat))';
+%           x=double(db.features(:,ind_feat))';
 % %         A=sig_pca(x,0);
 % % 		if size(A,2) > max(opt.dim)
 % % 			A = A(:,1:max(opt.dim));
