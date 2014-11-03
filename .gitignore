@@ -3,5 +3,6 @@
 *.jpeg
 *.mat
 
+dataset/
 dataset/joint_use
 dataset/otheruse

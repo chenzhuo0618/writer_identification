@@ -71,8 +71,7 @@ function model = affine_train(db,train_set,opt)
 		mu{k} = sig_mean(db.features(:,ind_feat));
         
 %         x=db.features(:,ind_feat);
-        x=double(db.features(:,ind_feat))';
-%          x=double(db.features(:,ind_feat));
+         x=double(db.features(:,ind_feat));
 
 %         A=sig_pca(x,0);
 % 		if size(A,2) > max(opt.dim)
@@ -85,43 +84,44 @@ function model = affine_train(db,train_set,opt)
 %         lambda = 1./sqrt(s);
 %         [Z,E] = lrra(x,A,lambda);
 %         v{k}=Z;
-%         As{k}=A;
-
-        %%calc sb
-        [nFea,nClass]=size(x);
-        sw=zeros(nFea,nFea);
         
-		C = cov(x);
-		p = size(x, 1) / (labelsize - 1);
-		Sw = (p * C);
-        [M, lambda] = eig(Sw);
-		[s,ind] = sort(diag(lambda),'descend');
-		M = M(:,ind);
-        v{k}=M;
-        
-%         v{k}=x;
-%           v{k}=x;
-%         s = size(x);
-%         s = max(s(1),s(2));
-%         lambda = 1./sqrt(s);
-%         tol = 1e-7; % for ALM
-%         maxIter = 10000; % for ALM
-%         [A_hat E_hat iter] = inexact_alm_rpca(single(x), lambda, tol, maxIter);
+%       As{k}=A;        
+%       v{k}=x;
+%       v{k}=x;
+        s = size(x);
+        s = max(s(1),s(2));
+        lambda = 1./sqrt(s);
+        tol = 1e-7; % for ALM
+        maxIter = 10000; % for ALM
+        [A_hat E_hat iter] = inexact_alm_rpca(single(x), lambda, tol, maxIter);
 % %         
 % %     [s,ind]=sort(diag(A_hat),'descend');     
-%        v{k}=A_hat;
+       v{k}=A_hat;
 %         
 % 		v{k} = sig_pca(x,0);
 %         v{k}=rand(109,8);
 
-		% Truncate principal components if they exceed the maximum dimension.
-		if size(v{k},2) > max(opt.dim)
-			v{k} = v{k}(:,1:max(opt.dim));
-		end
-% 		v{k} = sig_pca(db.features(:,ind_feat),0);
+%calc sb%%%%%%
+%         x=double(db.features(:,ind_feat))';
+%         [nFea,nClass]=size(x);
+%         sw=zeros(nFea,nFea);
+%         
+% 		C = cov(x);
+% 		p = size(x, 1) / (labelsize - 1);
+% 		Sw = (p * C);
+%         [M, lambda] = eig(Sw);
+% 		[s,ind] = sort(diag(lambda),'descend');
+% 		M = M(:,ind);
+%         v{k}=M;
+% Truncate principal components if they exceed the maximum dimension.
 % 		if size(v{k},2) > max(opt.dim)
 % 			v{k} = v{k}(:,1:max(opt.dim));
 % 		end
+%%%%
+% 		v{k} = sig_pca(db.features(:,ind_feat),0);
+		if size(v{k},2) > max(opt.dim)
+			v{k} = v{k}(:,1:max(opt.dim));
+		end
 	end
 	
 	model.model_type = 'affine';
