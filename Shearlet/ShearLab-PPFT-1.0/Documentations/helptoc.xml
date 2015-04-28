@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<toc version="2.0">
+<!-- First tocitem specifies top level in Help browser Contents pane -->
+<!-- This can be a roadmap page, as shown below, or a content page -->
+    <tocitem target="html/shearlab_product_page.html">ShearLab Toolbox
+        <!-- Nest tocitems to create hierarchical entries in  Contents-->
+        <!-- To include icons, use the following syntax for tocitems: -->
+        <!-- <tocitem target="foo.html" image="HelpIcon.NAME"> -->
+        <!-- Title-of-Section </tocitem> -->
+        <!-- where NAME is one of the following (use capital letters): -->
+        <!-- FUNCTION, USER_GUIDE, EXAMPLES, BLOCK, GETTING_STARTED, -->
+        <!-- DEMOS, RELEASE_NOTES --> 
+        <!-- Icon images used for these entries are also stored in -->
+        <!-- matlabroot/toolbox/matlab/icons -->
+        <!-- A Getting Started Guide usually comes first -->
+        <tocitem target="html/getting_started.html" image="HelpIcon.GETTING_STARTED">
+            Getting Started with the ShearLab Toolbox
+        </tocitem>
+        <!-- User Guide comes next -->
+        <tocitem target="html/Instruction_for_Installation.html" 
+            image="HelpIcon.USER_GUIDE">Installation and Uninstallation     
+        </tocitem>
+        <!-- Function reference next -->
+        <!-- First item is page describing function categories, if any -->
+        <tocitem target="html/helpfuncbycat.html" 
+                 image="HelpIcon.FUNCTION">Functions by Category
+            <!-- First category, with link to anchor in above page -->
+            <tocitem target="html/PPFTs_Contents.html">PPFTs
+                <!-- Inside category, list its functions alphabetically -->
+                <tocitem target="html/PPFTs/AdjfrFT_help.html" image="HelpIcon.FUNCTION">AdjfrFT</tocitem>
+                <tocitem target="html/PPFTs/AdjppFT_help.html" image="HelpIcon.FUNCTION">AdjppFT</tocitem>
+                <tocitem target="html/PPFTs/frFT_help.html" image="HelpIcon.FUNCTION">frFT</tocitem>
+                <tocitem target="html/PPFTs/FtCF_help.html" image="HelpIcon.FUNCTION">FtCF</tocitem>
+                <tocitem target="html/PPFTs/InvFtCF_help.html" image="HelpIcon.FUNCTION">InvFtCF</tocitem>
+                <tocitem target="html/PPFTs/InvppFTCG_help.html" image="HelpIcon.FUNCTION">InvppFTCG</tocitem>                
+                <tocitem target="html/PPFTs/ppFT_help.html" image="HelpIcon.FUNCTION">ppFT</tocitem>                
+                <!-- ... -->
+            </tocitem>
+            <!-- Second category, with link to anchor in above page -->
+            <tocitem target="html/Weighting_Contents.html">Weighting
+                <!-- Inside category, list its functions alphabetically -->
+                <tocitem target="html/Weighting/basisFunction_help.html" image="HelpIcon.FUNCTION">basisFunction</tocitem>
+                <tocitem target="html/Weighting/condW_help.html" image="HelpIcon.FUNCTION">condW</tocitem>
+                <tocitem target="html/Weighting/errorW_help.html" image="HelpIcon.FUNCTION">errorW</tocitem>
+                <tocitem target="html/Weighting/errorW_random_help.html" image="HelpIcon.FUNCTION">errorW_random</tocitem>
+                <tocitem target="html/Weighting/findWeight_help.html" image="HelpIcon.FUNCTION">findWeight</tocitem>
+                <tocitem target="html/Weighting/fnnls_help.html" image="HelpIcon.FUNCTION">fnnls</tocitem>
+                <tocitem target="html/Weighting/generateW_help.html" image="HelpIcon.FUNCTION">generateW</tocitem>
+                <tocitem target="html/Weighting/loadW_help.html" image="HelpIcon.FUNCTION">loadW</tocitem>
+                <tocitem target="html/Weighting/saveW_help.html" image="HelpIcon.FUNCTION">saveW</tocitem>
+                <tocitem target="html/Weighting/WeightGenerate_help.html" image="HelpIcon.FUNCTION">WeightGenerate</tocitem>
+                <!-- ... -->
+             </tocitem>
+             <tocitem target="html/Windowing_Contents.html">Windowing
+                <!-- Inside category, list its functions alphabetically -->
+                <tocitem target="html/Windowing/AdjWindowOnPPGrid_help.html" image="HelpIcon.FUNCTION">AdjWindowOnPPGrid</tocitem>
+                <tocitem target="html/Windowing/bumpV_help.html" image="HelpIcon.FUNCTION">bumpV</tocitem>
+                <tocitem target="html/Windowing/Meyer_help.html" image="HelpIcon.FUNCTION">Meyer</tocitem>
+                <tocitem target="html/Windowing/nv_help.html" image="HelpIcon.FUNCTION">nv</tocitem>
+                <tocitem target="html/Windowing/ParaScale_help.html" image="HelpIcon.FUNCTION">ParaScale</tocitem>
+                <tocitem target="html/Windowing/WindowOnPPGrid_help.html" image="HelpIcon.FUNCTION">WindowOnPPGrid</tocitem>                
+                <!-- ... -->
+             </tocitem>
+             <tocitem target="html/ShearletTransform_Contents.html">Shearlet Transform
+                <!-- Inside category, list its functions alphabetically -->
+                <tocitem target="html/ShearletTransform/AdjShearletTransform_help.html" image="HelpIcon.FUNCTION">AdjShearletTransform</tocitem>
+                <tocitem target="html/ShearletTransform/InvShearletTransform_help.html" image="HelpIcon.FUNCTION">InvShearletTransform</tocitem>
+                <tocitem target="html/ShearletTransform/ShearletTransform_help.html" image="HelpIcon.FUNCTION">ShearletTransform</tocitem>
+                <!-- ... -->
+             </tocitem>
+             <tocitem target="html/Utilities_Contents.html">Utilites
+                <!-- Inside category, list its functions alphabetically -->
+                <tocitem target="html/Utilities/EigMaxMinFtCF_help.html" image="HelpIcon.FUNCTION">EigMaxMinFtCF</tocitem>
+                <tocitem target="html/Utilities/GetppCoordinates_help.html" image="HelpIcon.FUNCTION">GetppCoordinates</tocitem>
+                <tocitem target="html/Utilities/GetShearlet_help.html" image="HelpIcon.FUNCTION">GetShearlet</tocitem>
+                <tocitem target="html/Utilities/imShear_help.html" image="HelpIcon.FUNCTION">imShear</tocitem>
+                <tocitem target="html/Utilities/imShear2_help.html" image="HelpIcon.FUNCTION">imShear2</tocitem>
+                <tocitem target="html/Utilities/pHolderSmooth2D_help.html" image="HelpIcon.FUNCTION">pHolderSmooth2D</tocitem>
+                <tocitem target="html/Utilities/PSNR_help.html " image="HelpIcon.FUNCTION">PSNR</tocitem>
+                <!-- ... -->
+             </tocitem>
+             <tocitem target="html/Visualization_Contents.html">Visualization
+                <!-- Inside category, list its functions alphabetically -->
+                <tocitem target="html/Visualization/displayShX_help.html" image="HelpIcon.FUNCTION">displayShX</tocitem>
+                <tocitem target="html/Visualization/PlotShearletImage_help.html" image="HelpIcon.FUNCTION">PlotShearletImage</tocitem>
+                <tocitem target="html/Visualization/ppview_help.html" image="HelpIcon.FUNCTION">ppview</tocitem>
+                <!-- ... -->
+             </tocitem>
+             <tocitem target="html/Tests_Contents.html">Test Measures
+                <!-- Inside category, list its functions alphabetically -->
+                <tocitem target="html/Tests/TestAlgExact_help.html" image="HelpIcon.FUNCTION">Algebraic Exactness</tocitem>
+                <tocitem target="html/Tests/TestGeomExact_help.html" image="HelpIcon.FUNCTION">Geometric Exactness</tocitem>
+                <tocitem target="html/Tests/TestIsometry_help.html" image="HelpIcon.FUNCTION">Isometry</tocitem>
+                <tocitem target="html/Tests/TestPackage_help.html" image="HelpIcon.FUNCTION">Test Package</tocitem>
+                <tocitem target="html/Tests/TestQuantization_help.html" image="HelpIcon.FUNCTION">Quantization</tocitem>
+                <tocitem target="html/Tests/TestRobustness_help.html" image="HelpIcon.FUNCTION">Robustness</tocitem>
+                <tocitem target="html/Tests/TestShearInvariance_help.html" image="HelpIcon.FUNCTION">Shear Invariance</tocitem>
+                <tocitem target="html/Tests/TestSpeed_help.html" image="HelpIcon.FUNCTION">Speed</tocitem>
+                <tocitem target="html/Tests/TestThresholding_help.html" image="HelpIcon.FUNCTION">Thresholding</tocitem>
+                <tocitem target="html/Tests/TestTightness_help.html" image="HelpIcon.FUNCTION">Tightness</tocitem>
+                <tocitem target="html/Tests/TestTimeFreqLoc_help.html" image="HelpIcon.FUNCTION">Time Frequency Localization</tocitem>
+                <!-- ... -->
+             </tocitem>
+             <tocitem target="html/Denoising_Contents.html">Denoising
+                <!-- Inside category, list its functions alphabetically -->
+                <tocitem target="html/Denoising/DenoiseDemo_help.html" image="HelpIcon.FUNCTION">DenoiseDemo</tocitem>
+                <tocitem target="html/Denoising/dshden_help.html" image="HelpIcon.FUNCTION">dshden</tocitem>
+                <tocitem target="html/Denoising/ShXThres_help.html" image="HelpIcon.FUNCTION">ShXThres</tocitem>
+                <tocitem target="html/Denoising/ShXSort_help.html" image="HelpIcon.FUNCTION">ShXSort</tocitem>
+                <!-- ... -->
+             </tocitem>
+             
+         </tocitem>
+        <!-- Optional List of Examples, with hyperlinks to examples in other files -->
+        <tocitem target="html/Demos_Contents.html" 
+                 image="HelpIcon.EXAMPLES">Demos
+             <tocitem target="html/Demos/DenoiseDemo1_help.html" 
+                 image="HelpIcon.EXAMPLES">Denoise Demo 1
+             </tocitem>
+             <tocitem target="html/Demos/DenoiseDemo2_help.html" 
+                 image="HelpIcon.DEMOS">Denoise Demo 2
+             </tocitem>        
+        </tocitem>
+        <tocitem target="references/references.html" 
+                 image="HelpIcon.RELEASE_NOTES">References
+        </tocitem>        
+        <!-- Optional link or links to your or other Web sites -->
+        <tocitem target="http://www.shearlab.org" 
+                 image="$toolbox/matlab/icons/webicon.gif">
+        ShearLab Web Site 
+        </tocitem>
+    </tocitem>
+</toc>

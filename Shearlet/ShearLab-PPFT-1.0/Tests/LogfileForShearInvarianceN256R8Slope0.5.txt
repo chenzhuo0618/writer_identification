@@ -1,0 +1,51 @@
+Test Shear Invariance: 
+N = 256, R = 8, beta = 4, slope = 0.5
+
+log: scale = 4,	 tileI = -7, 	 tileJ = -15, 	 maxI = 0.000276, 	 maxJ = 0.000089, 	 maxIJ = 0.000187
+log: scale = 4,	 tileI = -6, 	 tileJ = -14, 	 maxI = 0.000317, 	 maxJ = 0.000112, 	 maxIJ = 0.000205
+log: scale = 4,	 tileI = -5, 	 tileJ = -13, 	 maxI = 0.000374, 	 maxJ = 0.000140, 	 maxIJ = 0.000234
+log: scale = 4,	 tileI = -4, 	 tileJ = -12, 	 maxI = 0.000456, 	 maxJ = 0.000176, 	 maxIJ = 0.000281
+log: scale = 4,	 tileI = -3, 	 tileJ = -11, 	 maxI = 0.000592, 	 maxJ = 0.000230, 	 maxIJ = 0.000363
+log: scale = 4,	 tileI = -2, 	 tileJ = -10, 	 maxI = 0.000863, 	 maxJ = 0.000330, 	 maxIJ = 0.000535
+log: scale = 4,	 tileI = -1, 	 tileJ = -9, 	 maxI = 0.002092, 	 maxJ = 0.000873, 	 maxIJ = 0.001374
+log: scale = 4,	 tileI = 0, 	 tileJ = -8, 	 maxI = 0.014087, 	 maxJ = 0.005091, 	 maxIJ = 0.011778
+log: scale = 4,	 tileI = 1, 	 tileJ = -7, 	 maxI = 0.002046, 	 maxJ = 0.000826, 	 maxIJ = 0.001374
+log: scale = 4,	 tileI = 2, 	 tileJ = -6, 	 maxI = 0.000712, 	 maxJ = 0.000244, 	 maxIJ = 0.000535
+log: scale = 4,	 tileI = 3, 	 tileJ = -5, 	 maxI = 0.000440, 	 maxJ = 0.000165, 	 maxIJ = 0.000363
+log: scale = 4,	 tileI = 4, 	 tileJ = -4, 	 maxI = 0.000304, 	 maxJ = 0.000148, 	 maxIJ = 0.000281
+log: scale = 4,	 tileI = 5, 	 tileJ = -3, 	 maxI = 0.000221, 	 maxJ = 0.000140, 	 maxIJ = 0.000234
+log: scale = 4,	 tileI = 6, 	 tileJ = -2, 	 maxI = 0.000165, 	 maxJ = 0.000135, 	 maxIJ = 0.000205
+log: scale = 4,	 tileI = 7, 	 tileJ = -1, 	 maxI = 0.000126, 	 maxJ = 0.000132, 	 maxIJ = 0.000187
+log: scale = 4,	 tileI = 8, 	 tileJ = 0, 	 maxI = 0.000099, 	 maxJ = 0.000131, 	 maxIJ = 0.000176
+log: scale = 4,	 tileI = 9, 	 tileJ = 1, 	 maxI = 0.000078, 	 maxJ = 0.000138, 	 maxIJ = 0.000171
+log: scale = 4,	 tileI = 10, 	 tileJ = 2, 	 maxI = 0.000060, 	 maxJ = 0.000148, 	 maxIJ = 0.000171
+log: scale = 4,	 tileI = 11, 	 tileJ = 3, 	 maxI = 0.000049, 	 maxJ = 0.000158, 	 maxIJ = 0.000175
+log: scale = 4,	 tileI = 12, 	 tileJ = 4, 	 maxI = 0.000053, 	 maxJ = 0.000176, 	 maxIJ = 0.000185
+log: scale = 4,	 tileI = 13, 	 tileJ = 5, 	 maxI = 0.000057, 	 maxJ = 0.000208, 	 maxIJ = 0.000203
+log: scale = 4,	 tileI = 14, 	 tileJ = 6, 	 maxI = 0.000060, 	 maxJ = 0.000251, 	 maxIJ = 0.000234
+log: scale = 4,	 tileI = 15, 	 tileJ = 7, 	 maxI = 0.000063, 	 maxJ = 0.000361, 	 maxIJ = 0.000356
+log: scale = 3,	 tileI = -3, 	 tileJ = -7, 	 maxI = 0.000378, 	 maxJ = 0.000408, 	 maxIJ = 0.000076
+log: scale = 3,	 tileI = -2, 	 tileJ = -6, 	 maxI = 0.000601, 	 maxJ = 0.000648, 	 maxIJ = 0.000115
+log: scale = 3,	 tileI = -1, 	 tileJ = -5, 	 maxI = 0.001634, 	 maxJ = 0.001758, 	 maxIJ = 0.000303
+log: scale = 3,	 tileI = 0, 	 tileJ = -4, 	 maxI = 0.012510, 	 maxJ = 0.016455, 	 maxIJ = 0.005292
+log: scale = 3,	 tileI = 1, 	 tileJ = -3, 	 maxI = 0.001678, 	 maxJ = 0.001802, 	 maxIJ = 0.000303
+log: scale = 3,	 tileI = 2, 	 tileJ = -2, 	 maxI = 0.000657, 	 maxJ = 0.000704, 	 maxIJ = 0.000115
+log: scale = 3,	 tileI = 3, 	 tileJ = -1, 	 maxI = 0.000435, 	 maxJ = 0.000465, 	 maxIJ = 0.000076
+log: scale = 3,	 tileI = 4, 	 tileJ = 0, 	 maxI = 0.000328, 	 maxJ = 0.000351, 	 maxIJ = 0.000059
+log: scale = 3,	 tileI = 5, 	 tileJ = 1, 	 maxI = 0.000268, 	 maxJ = 0.000286, 	 maxIJ = 0.000050
+log: scale = 3,	 tileI = 6, 	 tileJ = 2, 	 maxI = 0.000226, 	 maxJ = 0.000241, 	 maxIJ = 0.000046
+log: scale = 3,	 tileI = 7, 	 tileJ = 3, 	 maxI = 0.000197, 	 maxJ = 0.000210, 	 maxIJ = 0.000044
+log: scale = 2,	 tileI = -1, 	 tileJ = -3, 	 maxI = 0.006660, 	 maxJ = 0.006708, 	 maxIJ = 0.000095
+log: scale = 2,	 tileI = 0, 	 tileJ = -2, 	 maxI = 0.050978, 	 maxJ = 0.051870, 	 maxIJ = 0.000891
+log: scale = 2,	 tileI = 1, 	 tileJ = -1, 	 maxI = 0.006695, 	 maxJ = 0.006743, 	 maxIJ = 0.000095
+log: scale = 2,	 tileI = 2, 	 tileJ = 0, 	 maxI = 0.002621, 	 maxJ = 0.002639, 	 maxIJ = 0.000036
+log: scale = 2,	 tileI = 3, 	 tileJ = 1, 	 maxI = 0.001704, 	 maxJ = 0.001716, 	 maxIJ = 0.000023
+log: scale = 1,	 tileI = 0, 	 tileJ = -1, 	 maxI = 0.097110, 	 maxJ = 0.097222, 	 maxIJ = 0.000112
+log: scale = 1,	 tileI = 1, 	 tileJ = 0, 	 maxI = 0.021139, 	 maxJ = 0.021152, 	 maxIJ = 0.000021
+
+Shear Invariance: Scale =1, Mshear = 1.587773E-005
+Shear Invariance: Scale =2, Mshear = 1.834537E-004
+Shear Invariance: Scale =3, Mshear = 1.539169E-003
+Shear Invariance: Scale =4, Mshear = 3.089193E-003
+
+Elapsed time is 13.68 seconds

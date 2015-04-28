@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>PPFT</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-17"><meta name="m-file" content="ppFT_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>PPFT</h1><!--introduction--><pre> Computing the pseudo-polar Fourier Transfrom of an image.</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Example</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li><li><a href="#5">Update History</a></li></ul></div><h2>Description<a name="1"></a></h2><pre> Given a image of size $N$, PPFT computes its pesudo-polar Fourier
+ transform on a grid with Nr pseudo-radius by Na pseudo angles.
+ As of now Nr and Na can only be R*n+1 and n+1 for any integer R&gt;=2.
+ by default R = 2, Nr = 2n+1, and Na = n+1.</pre><pre> Y = PPFT(X,R) compute the pseudo-polar Fourier transform of X with
+ oversampling rate R along radial direction. X is matrix of size n-by-n
+ and Y is an image of size 2*(Rn+1)*(n+1)</pre><h2>Example<a name="2"></a></h2><pre class="codeinput">      img  = imread(<span class="string">'barbara.gif'</span>);
+      img  = double(img);
+      pImg = ppFT(img,2);
+</pre><h2>See also<a name="3"></a></h2><p><a href="frFT_help.html">FRFT</a>, <a href="adjfrFT_help.html">ADJFRFT</a>, <a href="adjppFT_help.html">ADJPPFT</a>, <a href="InvppFTCG_help.html">INVPPFTCG</a>.</p><h2>Copyright<a name="4"></a></h2><pre> Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</pre><h2>Update History<a name="5"></a></h2><pre> normalization: deivide by n:June 19th 2008
+ Oversmapling R: June 23
+ correct program to match for R &gt; 2: Nov. 9, 2010 by Xiaosheng Zhuang</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% PPFT  
+%   Computing the pseudo-polar Fourier Transfrom of an image.
+%
+%% Description
+%   Given a image of size $N$, PPFT computes its pesudo-polar Fourier
+%   transform on a grid with Nr pseudo-radius by Na pseudo angles.
+%   As of now Nr and Na can only be R*n+1 and n+1 for any integer R>=2.
+%   by default R = 2, Nr = 2n+1, and Na = n+1.
+%
+%   Y = PPFT(X,R) compute the pseudo-polar Fourier transform of X with 
+%   oversampling rate R along radial direction. X is matrix of size n-by-n
+%   and Y is an image of size 2*(Rn+1)*(n+1)
+%
+%% Example
+      img  = imread('barbara.gif');
+      img  = double(img);
+      pImg = ppFT(img,2);
+
+%% See also 
+% <frFT_help.html FRFT>,
+% <adjfrFT_help.html ADJFRFT>, 
+% <adjppFT_help.html ADJPPFT>, 
+% <InvppFTCG_help.html INVPPFTCG>.
+
+%% Copyright
+%   Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+%
+%% Update History
+%   normalization: deivide by n:June 19th 2008
+%   Oversmapling R: June 23
+%   correct program to match for R > 2: Nov. 9, 2010 by Xiaosheng Zhuang
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,165 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>ADJWINDOWONPPGRID</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-17"><meta name="m-file" content="AdjWindowOnPPGrid_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>ADJWINDOWONPPGRID</h1><!--introduction--><p>Adjoint W operator, adjoint subband windowing  with 2D FFT</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>Description<a name="1"></a></h2><pre>Y = ADJWINDOWONPPGRID(Y,N,R,BETA)
+  x: array (2,(R*n)+1,n+1) : (sector,radial,slope) 2 sectors.
+  beta: 2 or 4; scaling factor 2^j or 4^j.
+  R: oversampling rate
+  y: digital shearlet coefficients which is a cell array:
+     each y{sector,scale,tile} is a complex-valued matrix, 2D FFT
+  sector runs through 4 values
+  scale  runs through J     approx log(N)/log(beta/2) values
+  tile   runs through Ntile approx beta^scale values   [OUCH!]</pre><h2>Examples<a name="2"></a></h2><pre class="codeinput">    R    = 4; beta = 4;
+    img  = imread(<span class="string">'barbara.gif'</span>);
+    img  = double(img);
+    N    = size(img,1);
+    pimg = ppFT(img,R);
+    shX  = WindowOnPPGrid(pimg,beta,0);
+    size(shX)
+    tpimg= AdjWindowOnPPGrid(shX,N,R,beta);
+    size(tpimg)
+    norm(squeeze(tpimg(1,:,:)-pimg(1,:,:)),inf)
+    norm(squeeze(tpimg(2,:,:)-pimg(2,:,:)),inf)
+</pre><pre class="codeoutput">Decomposition of high-frequency part...
+scale = 5, Number of Tiles = 65
+scale = 4, Number of Tiles = 33
+scale = 3, Number of Tiles = 17
+scale = 2, Number of Tiles = 9
+scale = 1, Number of Tiles = 5
+scale = 0, Number of Tiles = 3
+scale = -1, Number of Tiles = 1
+Decomposition of low frequency part...
+Done!
+
+ans =
+
+     4     8    65
+
+Reconstruction from high-frequency part...
+scale = 5, Number of Tiles = 65
+scale = 4, Number of Tiles = 33
+scale = 3, Number of Tiles = 17
+scale = 2, Number of Tiles = 9
+scale = 1, Number of Tiles = 5
+scale = 0, Number of Tiles = 3
+scale = -1, Number of Tiles = 1
+Reconstrucion from low frequency part...
+Done!
+
+ans =
+
+           2        2049         513
+
+
+ans =
+
+  2.0511e-009
+
+
+ans =
+
+  1.4006e-009
+
+</pre><h2>See also<a name="3"></a></h2><p><a href="meyer_help.html">MEYER</a>, <a href="bumpV_help.html">BUMPV</a>, <a href="nv_help.html">NV</a>, <a href="ParaScale_help.html">PARASCALE</a>, <a href="WindowOnPPGrid_help.html">WINDOWONPPGRID</a>.</p><h2>Copyright<a name="4"></a></h2><p>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% ADJWINDOWONPPGRID 
+% Adjoint W operator, adjoint subband windowing  with 2D FFT
+%
+%% Description
+%  Y = ADJWINDOWONPPGRID(Y,N,R,BETA)
+%    x: array (2,(R*n)+1,n+1) : (sector,radial,slope) 2 sectors.  
+%    beta: 2 or 4; scaling factor 2^j or 4^j.
+%    R: oversampling rate
+%    y: digital shearlet coefficients which is a cell array:   
+%       each y{sector,scale,tile} is a complex-valued matrix, 2D FFT
+%    sector runs through 4 values
+%    scale  runs through J     approx log(N)/log(beta/2) values
+%    tile   runs through Ntile approx beta^scale values   [OUCH!]
+
+%% Examples
+    R    = 4; beta = 4;
+    img  = imread('barbara.gif');
+    img  = double(img);
+    N    = size(img,1);
+    pimg = ppFT(img,R);
+    shX  = WindowOnPPGrid(pimg,beta,0);
+    size(shX)
+    tpimg= AdjWindowOnPPGrid(shX,N,R,beta);
+    size(tpimg)
+    norm(squeeze(tpimg(1,:,:)-pimg(1,:,:)),inf)
+    norm(squeeze(tpimg(2,:,:)-pimg(2,:,:)),inf)
+
+%% See also 
+% <meyer_help.html MEYER>, 
+% <bumpV_help.html BUMPV>, 
+% <nv_help.html NV>, 
+% <ParaScale_help.html PARASCALE>, 
+% <WindowOnPPGrid_help.html WINDOWONPPGRID>.
+
+%% Copyright
+% Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+##### SOURCE END #####
+--></body></html>

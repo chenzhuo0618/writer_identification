@@ -1,0 +1,107 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>IMSHEAR</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-20"><meta name="m-file" content="imShear_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>IMSHEAR</h1><!--introduction--><p>Image shearing with slope s</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">DESCRIPTION</a></li><li><a href="#2">EXAMPLE</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>DESCRIPTION<a name="1"></a></h2><pre> IMGOUT = IMSHEAR(I,S)
+  shear a image with slope S.
+ Input
+    I - Image
+    s - slope
+ Ouput
+    imgOut - Output sheared image</pre><h2>EXAMPLE<a name="2"></a></h2><pre class="codeinput">      img = zeros(256);
+      img(129,:) = 1;
+      imgS = imShear(img,0.5);
+      figure(1);
+      subplot(1,2,1), imshow(img);
+      subplot(1,2,2), imshow(imgS);
+</pre><img vspace="5" hspace="5" src="imShear_help_01.png" alt=""> <h2>See also<a name="3"></a></h2><p><a href="imShear2_help.html">IMSHEAR2</a></p><h2>Copyright<a name="4"></a></h2><pre> Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% IMSHEAR 
+% Image shearing with slope s
+% 
+%% DESCRIPTION
+%   IMGOUT = IMSHEAR(I,S)
+%    shear a image with slope S.
+%   Input
+%      I - Image 
+%      s - slope
+%   Ouput
+%      imgOut - Output sheared image
+%
+%% EXAMPLE
+      img = zeros(256);
+      img(129,:) = 1;      
+      imgS = imShear(img,0.5);
+      figure(1);
+      subplot(1,2,1), imshow(img);
+      subplot(1,2,2), imshow(imgS); 
+
+%% See also 
+% <imShear2_help.html IMSHEAR2>
+
+%% Copyright
+%   Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+##### SOURCE END #####
+--></body></html>

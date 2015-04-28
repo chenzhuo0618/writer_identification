@@ -1,0 +1,37 @@
+Test Robustness: 
+N = 512, R=8
+Subtest Thresholding 1: 
+Percent = 75.00000000, Mthres1 =1.526181E-008  
+Percent = 93.75000000, Mthres1 =7.281845E-008  
+Percent = 98.43750000, Mthres1 =2.508846E-005  
+Percent = 99.60937500, Mthres1 =1.001988E-003  
+Percent = 99.90234375, Mthres1 =6.791736E-003  
+Percent = 99.97558594, Mthres1 =3.060249E-002  
+Percent = 99.99389648, Mthres1 =1.435937E-001  
+Percent = 99.99847412, Mthres1 =4.317586E-001  
+Percent = 99.99961853, Mthres1 =5.916119E-001  
+Percent = 99.99990463, Mthres1 =9.704346E-001  
+
+Subtest Thresholding 2: 
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 2.955984E-004, Mthres2 =4.979756E-003  
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 3.240341E-003, Mthres2 =3.933576E-002  
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 6.164743E-003, Mthres2 =7.791963E-002  
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 9.068944E-003, Mthres2 =1.127709E-001  
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 1.195309E-002, Mthres2 =1.537069E-001  
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 1.481730E-002, Mthres2 =1.911757E-001  
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 1.766174E-002, Mthres2 =2.233899E-001  
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 2.048652E-002, Mthres2 =2.498795E-001  
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 2.329180E-002, Mthres2 =3.026442E-001  
+MaxCoeff = 0.426606, MedianCoeff = 2.720164E-021, Threshold = 2.607769E-002, Mthres2 =3.277085E-001  
+
+Subtest Quantization: 
+Alphabet size = 0.001666, Mquant =3.379201E-002  
+Alphabet size = 0.002357, Mquant =4.652247E-002  
+Alphabet size = 0.003333, Mquant =5.739859E-002  
+Alphabet size = 0.004713, Mquant =7.109860E-002  
+Alphabet size = 0.006666, Mquant =1.091732E-001  
+Alphabet size = 0.009427, Mquant =1.203444E-001  
+Alphabet size = 0.013331, Mquant =1.634042E-001  
+Alphabet size = 0.018854, Mquant =2.311992E-001  
+Alphabet size = 0.026663, Mquant =2.618186E-001  
+Alphabet size = 0.037707, Mquant =3.145438E-001  

@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>FINDWEIGHT</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-21"><meta name="m-file" content="findWeight_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>FINDWEIGHT</h1><!--introduction--><p>find suitable weights on pseudo-polar grids in basis funtions.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>Description<a name="1"></a></h2><p>[W,W0,W1,W2,Q,B,QH] = FINDWEIGHT(P,N,NONNEG) find weights on pseudo-polar grid in terms of basis functions, P is generated from the  routine basisFuntion(N,R,Choice), N is the original image size,</p><pre>  NONNEG = 'forceNN1', use fnnls to find nonnegative weights, w = w0;
+  NONNEG = 'forceNN2', use lsqnonneg to find nonnegative weights, w =
+  w2;
+  NONNEG = otherwise, weights can be negative, w = w1.</pre><p>Q  = qh*qh';w, w0, w1, w2 are obtained by solving the least square problem Qw = b; qh is the linear conditions on the weights.</p><h2>Examples<a name="2"></a></h2><pre class="codeinput">    N = 64; R = 2; Choice = 1;
+    P = basisFunction(N,R,Choice);
+    [w,w0,w1,w2] = findWeight(P,N,<span class="string">'forceNN2'</span>);
+</pre><h2>See also<a name="3"></a></h2><p><a href="condW_help.html">CONDW</a>, <a href="errorW_random_help.html">ERRORW_RANDOM</a>, <a href="loadW_help.html">LOADW</a>, <a href="saveW_help.html">SAVEW</a>, <a href="WeightGenerate_help.html">WEIGHTGENERATE</a>, <a href="../PPFTs/ppFT_help.html">PPFT</a>, <a href="../PPFTs/AdjppFT_help.html">ADJPPFT</a>, <a href="basisFunction_help.html">BASISFUNCTION</a>. <a href="fnnls_help.html">FNNLS</a>.</p><h2>Copyright<a name="4"></a></h2><p>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% FINDWEIGHT 
+% find suitable weights on pseudo-polar grids in basis funtions.
+%
+%% Description
+% [W,W0,W1,W2,Q,B,QH] = FINDWEIGHT(P,N,NONNEG) find weights on pseudo-polar
+% grid in terms of basis functions, P is generated from the  routine
+% basisFuntion(N,R,Choice), N is the original image size,
+%
+%    NONNEG = 'forceNN1', use fnnls to find nonnegative weights, w = w0;
+%    NONNEG = 'forceNN2', use lsqnonneg to find nonnegative weights, w =
+%    w2;
+%    NONNEG = otherwise, weights can be negative, w = w1.
+%
+% Q  = qh*qh';w, w0, w1, w2 are obtained by solving the least square problem
+% Qw = b; qh is the linear conditions on the weights.
+%
+%% Examples
+    N = 64; R = 2; Choice = 1;
+    P = basisFunction(N,R,Choice);
+    [w,w0,w1,w2] = findWeight(P,N,'forceNN2');
+
+%% See also 
+% <condW_help.html CONDW>,
+% <errorW_random_help.html ERRORW_RANDOM>,
+% <loadW_help.html LOADW>,
+% <saveW_help.html SAVEW>,
+% <WeightGenerate_help.html WEIGHTGENERATE>,
+% <../PPFTs/ppFT_help.html PPFT>,
+% <../PPFTs/AdjppFT_help.html ADJPPFT>,
+% <basisFunction_help.html BASISFUNCTION>.
+% <fnnls_help.html FNNLS>.
+
+%% Copyright
+% Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+##### SOURCE END #####
+--></body></html>

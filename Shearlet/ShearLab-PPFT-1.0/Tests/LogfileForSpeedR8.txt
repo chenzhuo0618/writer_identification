@@ -1,0 +1,11 @@
+Test Speed: 
+N = 32, FwdSHT_Speed = 0.0473 secs, FFT_Speed = 0.000094 sec 
+N = 64, FwdSHT_Speed = 0.1137 secs, FFT_Speed = 0.000279 sec 
+N = 128, FwdSHT_Speed = 0.3925 secs, FFT_Speed = 0.000730 sec 
+N = 256, FwdSHT_Speed = 1.4079 secs, FFT_Speed = 0.003100 sec 
+N = 512, FwdSHT_Speed = 5.6575 secs, FFT_Speed = 0.016736 sec 
+Now the computation of the three measures!Speed. Complexity: Mspeed1 = 1.257482
+Speed. The Constant: Mspeed2 = 3.018535E-006
+Speed. Comparision with 2D-FFT: Mspeed3 = 448.193053
+
+Elapsed time is 9.47 seconds

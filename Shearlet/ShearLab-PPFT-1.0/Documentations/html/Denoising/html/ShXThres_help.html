@@ -1,0 +1,106 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>SHXTHRES</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-21"><meta name="m-file" content="ShXThres_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>SHXTHRES</h1><!--introduction--><p>thresholding shearlet coefficients%</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>Description<a name="1"></a></h2><p>ThresCoeff = ShXThres(ShX,N,R,beta,thr,level) thresholding shearlet coefficients. INPUT</p><pre>  ShX    - shearlet coefficeints</pre><pre>  N      - size of original image</pre><pre>  R      - oversampling rate, default R = 2;</pre><pre>  beta   - scaling factor, default beta = 4;</pre><pre>  thr    - threshold</pre><pre>  level  - decompoistion level</pre><pre>OUTPUT</pre><pre>  ThresCoeff - thresholded shearlet coefficient of X.</pre><h2>Examples<a name="2"></a></h2><pre>  see DENOISEDEMO</pre><h2>See also<a name="3"></a></h2><p><a href="../ShearletTransform/ShearletTransform_help.html">SHEARLETTRANSFORM</a>, <a href="../ShearletTransform/AdjShearletTransform_help.html">ADJSHEARLETTRANSFORM</a>, <a href="../ShearletTransform/InvShearletTransform_help.html">INVSHEARLETTRANSFORM</a>, <a href="DenoiseDemo_help.html">DENOISEDEMO</a></p><h2>Copyright<a name="4"></a></h2><p>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% SHXTHRES 
+% thresholding shearlet coefficients% 
+%% Description
+% ThresCoeff = ShXThres(ShX,N,R,beta,thr,level)
+% thresholding shearlet coefficients.
+% INPUT
+%
+%    ShX    - shearlet coefficeints
+%
+%    N      - size of original image
+%
+%    R      - oversampling rate, default R = 2;
+%
+%    beta   - scaling factor, default beta = 4;
+%
+%    thr    - threshold
+%
+%    level  - decompoistion level
+%
+%  OUTPUT
+%
+%    ThresCoeff - thresholded shearlet coefficient of X.
+% 
+%% Examples
+%    see DENOISEDEMO
+%% See also 
+% <../ShearletTransform/ShearletTransform_help.html SHEARLETTRANSFORM>,
+% <../ShearletTransform/AdjShearletTransform_help.html
+% ADJSHEARLETTRANSFORM>,
+% <../ShearletTransform/InvShearletTransform_help.html
+% INVSHEARLETTRANSFORM>,
+% <DenoiseDemo_help.html DENOISEDEMO>
+%
+%% Copyright
+% Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+
+##### SOURCE END #####
+--></body></html>

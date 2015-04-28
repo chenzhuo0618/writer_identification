@@ -1,0 +1,187 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>DENOISEDEMO</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-21"><meta name="m-file" content="DenoiseDemo1_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>DENOISEDEMO</h1><!--introduction--><p>denoising demo using shearlets</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Copyright</a></li><li><a href="#3">Reading image</a></li><li><a href="#4">generating a noisy image</a></li><li><a href="#5">Setting parameters</a></li><li><a href="#6">Denoising</a></li><li><a href="#7">dispay original image, noisy image, and denoised image</a></li></ul></div><h2>Description<a name="1"></a></h2><pre>  Denoising demo using shearlet transform</pre><h2>Copyright<a name="2"></a></h2><p>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</p><pre class="codeinput">clc
+clear <span class="string">all</span>;
+close <span class="string">all</span>;
+</pre><h2>Reading image<a name="3"></a></h2><p>1. image bridge img = imread('bridge.jpg'); img = img(89:600,1:512,:); 2. image barbara</p><pre class="codeinput">img  = imread(<span class="string">'barbara.gif'</span>);
+img1 = double(img(:,:,1));
+<span class="comment">%img = rgb2gray(img);</span>
+<span class="comment">%img = im2double(img);</span>
+<span class="comment">%img1= img1(1:2:512,1:2:512);</span>
+<span class="comment">%imshow(uint8(img1));</span>
+<span class="comment">% size(img1)</span>
+</pre><h2>generating a noisy image<a name="4"></a></h2><pre class="codeinput">sigma = 30;   <span class="comment">% noise level</span>
+noise = randn(size(img1))*sigma; <span class="comment">% Gaussian noise</span>
+noisyImg = img1+noise;
+</pre><h2>Setting parameters<a name="5"></a></h2><pre class="codeinput">R      = 2;                <span class="comment">% oversammpling rate R = 2, 4, 8, 16;</span>
+beta   = 2;                <span class="comment">% scaling factor beta = 2, 4</span>
+Choice = 1;                <span class="comment">% basis Choice, see GENERATEW</span>
+CG     = 0;                <span class="comment">% Use CG or not</span>
+err    = 1e-5;             <span class="comment">% CG control error</span>
+its    = 10;               <span class="comment">% CG maximal iterations</span>
+thr    = 0.01*sigma;       <span class="comment">% setting threshold</span>
+</pre><h2>Denoising<a name="6"></a></h2><pre class="codeinput">tic
+recImg = dshden(noisyImg,thr,R,beta,Choice,0,CG,err,its);
+toc
+</pre><pre class="codeoutput">Forward Shearlet Transform...
+ppFT ...
+Weighting ...
+Windowing ...
+Decomposition of high-frequency part...
+scale = 9, Number of Tiles = 33
+scale = 8, Number of Tiles = 33
+scale = 7, Number of Tiles = 17
+scale = 6, Number of Tiles = 17
+scale = 5, Number of Tiles = 9
+scale = 4, Number of Tiles = 9
+scale = 3, Number of Tiles = 5
+scale = 2, Number of Tiles = 5
+scale = 1, Number of Tiles = 3
+scale = 0, Number of Tiles = 3
+Decomposition of low frequency part...
+Done!
+Done with Forward Shearlet Transform!
+Backward Shearlet Transform...
+Adjoint Windowing...
+Reconstruction from high-frequency part...
+scale = 9, Number of Tiles = 33
+scale = 8, Number of Tiles = 33
+scale = 7, Number of Tiles = 17
+scale = 6, Number of Tiles = 17
+scale = 5, Number of Tiles = 9
+scale = 4, Number of Tiles = 9
+scale = 3, Number of Tiles = 5
+scale = 2, Number of Tiles = 5
+scale = 1, Number of Tiles = 3
+scale = 0, Number of Tiles = 3
+Reconstrucion from low frequency part...
+Done!
+Weighting...
+AdjppFT...
+Done with Backward Shearlet Transform!
+Elapsed time is 4.204916 seconds.
+</pre><h2>dispay original image, noisy image, and denoised image<a name="7"></a></h2><pre class="codeinput">psnr1 = PSNR(img1,noisyImg);
+figure(1), imshow(uint8(img1));
+figure(2), imshow(uint8(noisyImg)); text(10,-15,[<span class="string">'PSNR = '</span> num2str(psnr1)]);
+psnr2 = PSNR(img1,real(recImg)) ;
+figure(3),imshow(uint8(real(recImg)));text(10,-15,[<span class="string">'PSNR = '</span> num2str(psnr2)]);
+</pre><img vspace="5" hspace="5" src="DenoiseDemo1_help_01.png" alt=""> <img vspace="5" hspace="5" src="DenoiseDemo1_help_02.png" alt=""> <img vspace="5" hspace="5" src="DenoiseDemo1_help_03.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% DENOISEDEMO 
+% denoising demo using shearlets
+% 
+%% Description
+%    Denoising demo using shearlet transform 
+%
+%% Copyright
+% Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+
+clc
+clear all;
+close all;
+
+%% Reading image
+% 1. image bridge
+% img = imread('bridge.jpg');  
+% img = img(89:600,1:512,:);
+% 2. image barbara
+img  = imread('barbara.gif');
+img1 = double(img(:,:,1));
+%img = rgb2gray(img);
+%img = im2double(img);
+%img1= img1(1:2:512,1:2:512);
+%imshow(uint8(img1));
+% size(img1)
+
+%% generating a noisy image
+sigma = 30;   % noise level
+noise = randn(size(img1))*sigma; % Gaussian noise
+noisyImg = img1+noise;
+
+%% Setting parameters
+R      = 2;                % oversammpling rate R = 2, 4, 8, 16;
+beta   = 2;                % scaling factor beta = 2, 4
+Choice = 1;                % basis Choice, see GENERATEW
+CG     = 0;                % Use CG or not
+err    = 1e-5;             % CG control error
+its    = 10;               % CG maximal iterations
+thr    = 0.01*sigma;       % setting threshold
+      
+%% Denoising
+tic
+recImg = dshden(noisyImg,thr,R,beta,Choice,0,CG,err,its);
+toc
+
+%% dispay original image, noisy image, and denoised image
+psnr1 = PSNR(img1,noisyImg);
+figure(1), imshow(uint8(img1));
+figure(2), imshow(uint8(noisyImg)); text(10,-15,['PSNR = ' num2str(psnr1)]);
+psnr2 = PSNR(img1,real(recImg)) ;  
+figure(3),imshow(uint8(real(recImg)));text(10,-15,['PSNR = ' num2str(psnr2)]);   
+
+##### SOURCE END #####
+--></body></html>

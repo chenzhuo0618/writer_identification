@@ -1,0 +1,158 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>FNNLS</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-16"><meta name="m-file" content="fnnls_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>FNNLS</h1><!--introduction--><p>Non-negative least-squares.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">See also</a></li></ul></div><h2>Description<a name="1"></a></h2><p>	Adapted from NNLS of Mathworks, Inc.</p><pre class="codeinput"><span class="comment">%	x = fnnls(XtX,Xty) returns the vector X that solves x = pinv(XtX)*Xty</span>
+<span class="comment">%	in a least squares sense, subject to x &gt;= 0.</span>
+<span class="comment">%	Differently stated it solves the problem min ||y - Xx|| if</span>
+<span class="comment">%	XtX = X'*X and Xty = X'*y.</span>
+<span class="comment">%</span>
+<span class="comment">%	A default tolerance of TOL = MAX(SIZE(XtX)) * NORM(XtX,1) * EPS</span>
+<span class="comment">%	is used for deciding when elements of x are less than zero.</span>
+<span class="comment">%	This can be overridden with x = fnnls(XtX,Xty,TOL).</span>
+<span class="comment">%</span>
+<span class="comment">%	[x,w] = fnnls(XtX,Xty) also returns dual vector w where</span>
+<span class="comment">%	w(i) &lt; 0 where x(i) = 0 and w(i) = 0 where x(i) &gt; 0.</span>
+<span class="comment">%</span>
+<span class="comment">%	See also NNLS and FNNLSb</span>
+
+<span class="comment">%	L. Shure 5-8-87</span>
+<span class="comment">%	Revised, 12-15-88,8-31-89 LS.</span>
+<span class="comment">%	(Partly) Copyright (c) 1984-94 by The MathWorks, Inc.</span>
+
+<span class="comment">%	Modified by R. Bro 5-7-96 according to</span>
+<span class="comment">%       Bro R., de Jong S., Journal of Chemometrics, 1997, 11, 393-401</span>
+<span class="comment">% 	Corresponds to the FNNLSa algorithm in the paper</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+<span class="comment">%	Rasmus bro</span>
+<span class="comment">%	Chemometrics Group, Food Technology</span>
+<span class="comment">%	Dept. Dairy and Food Science</span>
+<span class="comment">%	Royal Vet. &amp; Agricultural</span>
+<span class="comment">%	DK-1958 Frederiksberg C</span>
+<span class="comment">%	Denmark</span>
+<span class="comment">%	rb@kvl.dk</span>
+<span class="comment">%	http://newton.foodsci.kvl.dk/rasmus.html</span>
+
+
+<span class="comment">%  Reference:</span>
+<span class="comment">%  Lawson and Hanson, "Solving Least Squares Problems", Prentice-Hall, 1974.</span>
+</pre><h2>See also<a name="2"></a></h2><p><a href="condW_help.html">CONDW</a>, <a href="errorW_random_help.html">ERRORW_RANDOM</a>, <a href="loadW_help.html">LOADW</a>, <a href="saveW_help.html">SAVEW</a>, <a href="WeightGenerate_help.html">WEIGHTGENERATE</a>, <a href="../PPFTs/ppFT_help.html">PPFT</a>, <a href="../PPFTs/AdjppFT_help.html">ADJPPFT</a>, <a href="basisFunction_help.html">BASISFUNCTION</a>.</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% FNNLS	
+% Non-negative least-squares.
+%
+%% Description
+% 	Adapted from NNLS of Mathworks, Inc.
+%
+%	x = fnnls(XtX,Xty) returns the vector X that solves x = pinv(XtX)*Xty
+%	in a least squares sense, subject to x >= 0.
+%	Differently stated it solves the problem min ||y - Xx|| if
+%	XtX = X'*X and Xty = X'*y.
+%
+%	A default tolerance of TOL = MAX(SIZE(XtX)) * NORM(XtX,1) * EPS
+%	is used for deciding when elements of x are less than zero.
+%	This can be overridden with x = fnnls(XtX,Xty,TOL).
+%
+%	[x,w] = fnnls(XtX,Xty) also returns dual vector w where
+%	w(i) < 0 where x(i) = 0 and w(i) = 0 where x(i) > 0.
+%
+%	See also NNLS and FNNLSb
+
+%	L. Shure 5-8-87
+%	Revised, 12-15-88,8-31-89 LS.
+%	(Partly) Copyright (c) 1984-94 by The MathWorks, Inc.
+
+%	Modified by R. Bro 5-7-96 according to
+%       Bro R., de Jong S., Journal of Chemometrics, 1997, 11, 393-401
+% 	Corresponds to the FNNLSa algorithm in the paper
+%
+%	
+%	Rasmus bro
+%	Chemometrics Group, Food Technology
+%	Dept. Dairy and Food Science
+%	Royal Vet. & Agricultural
+%	DK-1958 Frederiksberg C
+%	Denmark
+%	rb@kvl.dk
+%	http://newton.foodsci.kvl.dk/rasmus.html
+
+
+%  Reference:
+%  Lawson and Hanson, "Solving Least Squares Problems", Prentice-Hall, 1974.
+
+%% See also
+% <condW_help.html CONDW>,
+% <errorW_random_help.html ERRORW_RANDOM>,
+% <loadW_help.html LOADW>,
+% <saveW_help.html SAVEW>,
+% <WeightGenerate_help.html WEIGHTGENERATE>,
+% <../PPFTs/ppFT_help.html PPFT>,
+% <../PPFTs/AdjppFT_help.html ADJPPFT>,
+% <basisFunction_help.html BASISFUNCTION>.
+
+
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,202 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>INVSHEARLETTRANSFORM</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-21"><meta name="m-file" content="InvShearletTransform_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>INVSHEARLETTRANSFORM</h1><!--introduction--><pre>Inverse of Shearlet Transform using CG.</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>Description<a name="1"></a></h2><p>X=INVSHEARLETTRANSFORM(SHX,N,R,BETA,W) Input:   ShX - shearlet coefficient structure from SHEARLETTRANSFORM</p><pre> N   - original image size N.</pre><pre> R   - oversampling rate</pre><pre> w   - weighting matrix, see GENERATEW</pre><pre> err - error controlled in CG</pre><pre> itsMax- maximal iteration in CG</pre><p>Output:</p><pre> X   - image of size N-by-N.</pre><pre> it  - total iteration times in CG</pre><pre> res - final iteration error in CG iteration</pre><h2>Examples<a name="2"></a></h2><pre class="codeinput">  tic
+  img = imread(<span class="string">'barbara.gif'</span>);
+  img = double(img);
+  N   = size(img,1); beta = 4;
+  R   = 4; basisChoice  = 5;
+  w   = generateW(N,R,basisChoice);
+  shX = ShearletTransform(img, R, beta, w, 0);
+  timg= AdjShearletTransform(shX,N,R,beta,w);
+  err = norm(timg-img,<span class="string">'fro'</span>)/norm(img,<span class="string">'fro'</span>)
+  [timg, its, rerr] = InvShearletTransform(shX,N,R,beta,w,1e-5,3);
+  err = norm(timg-img,<span class="string">'fro'</span>)/norm(img,<span class="string">'fro'</span>)
+  its, rerr
+  toc
+</pre><pre class="codeoutput">Forward Shearlet Transform...
+ppFT ...
+Weighting ...
+Windowing ...
+Decomposition of high-frequency part...
+scale = 5, Number of Tiles = 65
+scale = 4, Number of Tiles = 33
+scale = 3, Number of Tiles = 17
+scale = 2, Number of Tiles = 9
+scale = 1, Number of Tiles = 5
+scale = 0, Number of Tiles = 3
+scale = -1, Number of Tiles = 1
+Decomposition of low frequency part...
+Done!
+Done with Forward Shearlet Transform!
+Backward Shearlet Transform...
+Adjoint Windowing...
+Reconstruction from high-frequency part...
+scale = 5, Number of Tiles = 65
+scale = 4, Number of Tiles = 33
+scale = 3, Number of Tiles = 17
+scale = 2, Number of Tiles = 9
+scale = 1, Number of Tiles = 5
+scale = 0, Number of Tiles = 3
+scale = -1, Number of Tiles = 1
+Reconstrucion from low frequency part...
+Done!
+Weighting...
+AdjppFT...
+Done with Backward Shearlet Transform!
+
+err =
+
+    0.0014
+
+Inverse Shearlet Transform...
+Adjoint Windowing...
+Reconstruction from high-frequency part...
+scale = 5, Number of Tiles = 65
+scale = 4, Number of Tiles = 33
+scale = 3, Number of Tiles = 17
+scale = 2, Number of Tiles = 9
+scale = 1, Number of Tiles = 5
+scale = 0, Number of Tiles = 3
+scale = -1, Number of Tiles = 1
+Reconstrucion from low frequency part...
+Done!
+Weighting...
+InvppFTCG...
+Done with InverseShearlet Transform!
+
+err =
+
+  1.3143e-006
+
+
+its =
+
+     3
+
+
+rerr =
+
+    0.0046
+
+Elapsed time is 18.598188 seconds.
+</pre><h2>See also<a name="3"></a></h2><p><a href="AdjShearletTransform_help.html">ADJSHEARLETTRANSFORM</a>, <a href="ShearletTransform_help.html">SHEARLETTRANSFORM</a>, <a href="../PPFTs/ppFT_help.html">PPFT</a>, <a href="../PPFTs/AdjppFT_help.html">ADJPPFT</a>, <a href="../PPFTs/InvppFTCG_help.html">INVPPFTCG</a>, <a href="../Windowing/WindowOnPPGrid_help.html"> WINDOWONPPGRID</a> <a href="../Windowing/AdjWindowOnPPGrid_help.html"> ADJWINDOWONPPGRID</a> <a href="../Weighting/generateW_help.html"> GENERATEW</a></p><h2>Copyright<a name="4"></a></h2><p>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% INVSHEARLETTRANSFORM 
+%  Inverse of Shearlet Transform using CG.
+%
+%% Description
+% X=INVSHEARLETTRANSFORM(SHX,N,R,BETA,W)
+% Input:
+%   ShX - shearlet coefficient structure from SHEARLETTRANSFORM
+%
+%   N   - original image size N.
+%
+%   R   - oversampling rate
+%
+%   w   - weighting matrix, see GENERATEW
+%
+%   err - error controlled in CG
+%
+%   itsMax- maximal iteration in CG
+%
+% Output:
+%
+%   X   - image of size N-by-N.
+%
+%   it  - total iteration times in CG
+%
+%   res - final iteration error in CG iteration
+% 
+%% Examples
+  tic
+  img = imread('barbara.gif');
+  img = double(img);
+  N   = size(img,1); beta = 4;
+  R   = 4; basisChoice  = 5;
+  w   = generateW(N,R,basisChoice);
+  shX = ShearletTransform(img, R, beta, w, 0);
+  timg= AdjShearletTransform(shX,N,R,beta,w);
+  err = norm(timg-img,'fro')/norm(img,'fro')
+  [timg, its, rerr] = InvShearletTransform(shX,N,R,beta,w,1e-5,3);
+  err = norm(timg-img,'fro')/norm(img,'fro')
+  its, rerr
+  toc
+
+%% See also 
+% <AdjShearletTransform_help.html ADJSHEARLETTRANSFORM>,
+% <ShearletTransform_help.html SHEARLETTRANSFORM>,
+% <../PPFTs/ppFT_help.html PPFT>,
+% <../PPFTs/AdjppFT_help.html ADJPPFT>,
+% <../PPFTs/InvppFTCG_help.html INVPPFTCG>,
+% <../Windowing/WindowOnPPGrid_help.html  WINDOWONPPGRID>
+% <../Windowing/AdjWindowOnPPGrid_help.html  ADJWINDOWONPPGRID>
+% <../Weighting/generateW_help.html  GENERATEW>
+
+%% Copyright
+% Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+##### SOURCE END #####
+--></body></html>

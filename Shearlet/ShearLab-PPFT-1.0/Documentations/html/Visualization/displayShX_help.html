@@ -1,0 +1,188 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>DISPLAYSHX</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-20"><meta name="m-file" content="displayShX_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>DISPLAYSHX</h1><!--introduction--><pre>display shearlet coefficient blocks
+Use pause, press any key to continue</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">DESCRIPTION</a></li><li><a href="#2">EXAMPLE</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>DESCRIPTION<a name="1"></a></h2><pre>  DISPLAYSHX(X,R,BETA,PRECOND,LEVEL),
+  Input
+    X     - image
+    R     - oversampling rate
+    beta  - scaling factor
+    Choice- basisChoice
+    scale - which scale (level)
+    level - decomposition level</pre><h2>EXAMPLE<a name="2"></a></h2><pre class="codeinput">      N = 256; R = 8; beta = 4; Choice = 0; level=0;
+      x = randn(N);
+      displayShX(x,R,beta,Choice,level);
+</pre><pre class="codeoutput">Forward Shearlet Transform...
+ppFT ...
+Weighting ...
+Windowing ...
+Decomposition of high-frequency part...
+scale = 4, Number of Tiles = 33
+scale = 3, Number of Tiles = 17
+scale = 2, Number of Tiles = 9
+scale = 1, Number of Tiles = 5
+scale = 0, Number of Tiles = 3
+scale = -1, Number of Tiles = 1
+Decomposition of low frequency part...
+Done!
+Done with Forward Shearlet Transform!
+scale = 4, tile = -16
+scale = 4, tile = -15
+scale = 4, tile = -14
+scale = 4, tile = -13
+scale = 4, tile = -12
+scale = 4, tile = -11
+scale = 4, tile = -10
+scale = 4, tile = -9
+scale = 4, tile = -8
+scale = 4, tile = -7
+scale = 4, tile = -6
+scale = 4, tile = -5
+scale = 4, tile = -4
+scale = 4, tile = -3
+scale = 4, tile = -2
+scale = 4, tile = -1
+scale = 4, tile = 0
+scale = 4, tile = 1
+scale = 4, tile = 2
+scale = 4, tile = 3
+scale = 4, tile = 4
+scale = 4, tile = 5
+scale = 4, tile = 6
+scale = 4, tile = 7
+scale = 4, tile = 8
+scale = 4, tile = 9
+scale = 4, tile = 10
+scale = 4, tile = 11
+scale = 4, tile = 12
+scale = 4, tile = 13
+scale = 4, tile = 14
+scale = 4, tile = 15
+scale = 4, tile = 16
+scale = 3, tile = -8
+scale = 3, tile = -7
+scale = 3, tile = -6
+scale = 3, tile = -5
+scale = 3, tile = -4
+scale = 3, tile = -3
+scale = 3, tile = -2
+scale = 3, tile = -1
+scale = 3, tile = 0
+scale = 3, tile = 1
+scale = 3, tile = 2
+scale = 3, tile = 3
+scale = 3, tile = 4
+scale = 3, tile = 5
+scale = 3, tile = 6
+scale = 3, tile = 7
+scale = 3, tile = 8
+scale = 2, tile = -4
+scale = 2, tile = -3
+scale = 2, tile = -2
+scale = 2, tile = -1
+scale = 2, tile = 0
+scale = 2, tile = 1
+scale = 2, tile = 2
+scale = 2, tile = 3
+scale = 2, tile = 4
+scale = 1, tile = -2
+scale = 1, tile = -1
+scale = 1, tile = 0
+scale = 1, tile = 1
+scale = 1, tile = 2
+scale = 0, tile = -1
+scale = 0, tile = 0
+scale = 0, tile = 1
+scale = -1, tile = 0
+</pre><img vspace="5" hspace="5" src="displayShX_help_01.png" alt=""> <img vspace="5" hspace="5" src="displayShX_help_02.png" alt=""> <h2>See also<a name="3"></a></h2><p><a href="ppview_help.html">PPVIEW</a>, <a href="PlotShearletImage_help.html">PLOTSHEARLETIMAGE</a></p><h2>Copyright<a name="4"></a></h2><pre> Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% DISPLAYSHX 
+%  display shearlet coefficient blocks
+%  Use pause, press any key to continue
+%% DESCRIPTION
+%    DISPLAYSHX(X,R,BETA,PRECOND,LEVEL), 
+%    Input
+%      X     - image
+%      R     - oversampling rate
+%      beta  - scaling factor
+%      Choice- basisChoice
+%      scale - which scale (level)
+%      level - decomposition level
+%
+%% EXAMPLE
+      N = 256; R = 8; beta = 4; Choice = 0; level=0;
+      x = randn(N);
+      displayShX(x,R,beta,Choice,level);
+
+%% See also 
+% <ppview_help.html PPVIEW>, 
+% <PlotShearletImage_help.html PLOTSHEARLETIMAGE>
+
+%% Copyright
+%   Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+
+##### SOURCE END #####
+--></body></html>

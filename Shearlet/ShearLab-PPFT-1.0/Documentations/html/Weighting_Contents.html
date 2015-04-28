@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>WEIGHTING</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-17"><meta name="m-file" content="Weighting_Contents"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>WEIGHTING</h1><!--introduction--><p>Weighting on the pseudo-polar grids</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Files</a></li><li><a href="#2">Copyright</a></li></ul></div><h2>Files<a name="1"></a></h2><div><ul><li><a href="Weighting/basisFunction_help.html">basisFunction</a>  - generate basis functions on a pseudo-polar grid</li><li><a href="Weighting/findWeight_help.html"> findWeight</a>   - find suitable weights on pseudo-polar grids in basis funtions.</li><li><a href="Weighting/fnnls_help.html">fnnls</a>         - Non-negative least-squares.</li><li><a href="Weighting/WeightGenerate_help.html">WeightGenerate</a> - generate weight on a pseudo-polar grid</li><li><a href="Weighting/loadW_help.html">loadW</a>         - load weight constants found by FINDWEIGHTS</li><li><a href="Weighting/saveW_help.html">saveW</a>         - find weight constant and save it as files</li><li><a href="Weighting/condW_help.html">condW</a>         - condition number for the operator (F*wF - Id)||^2.</li><li><a href="Weighting/errorW_help.html">errorW</a>        - the frobenious error of <tt>|F*wF I- I</tt><tt>^2/</tt><tt>I</tt>|^2</li><li><a href="Weighting/errorW_random_help.html">errorW_random</a>  - Operator norm estimate for  <tt>|F*wF I- I</tt><tt>^2/</tt><tt>I</tt>|^2</li><li><a href="Weighting/generateW_help.html">generateW</a>  - generate weight matrix</li></ul></div><h2>Copyright<a name="2"></a></h2><p>Copyright (C) 2011, Xiaosheng Zhuang, University of Osnabrueck</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% WEIGHTING
+% Weighting on the pseudo-polar grids
+%
+%% Files
+% * <Weighting/basisFunction_help.html basisFunction>  - generate basis functions on a pseudo-polar grid
+% * <Weighting/findWeight_help.html  findWeight>   - find suitable weights on pseudo-polar grids in basis funtions.
+% * <Weighting/fnnls_help.html fnnls>         - Non-negative least-squares.
+% * <Weighting/WeightGenerate_help.html WeightGenerate> - generate weight on a pseudo-polar grid
+% * <Weighting/loadW_help.html loadW>         - load weight constants found by FINDWEIGHTS
+% * <Weighting/saveW_help.html saveW>         - find weight constant and save it as files
+% * <Weighting/condW_help.html condW>         - condition number for the operator (F*wF - Id)||^2.
+% * <Weighting/errorW_help.html errorW>        - the frobenious error of ||F*wF I- I||^2/||I||^2
+% * <Weighting/errorW_random_help.html errorW_random>  - Operator norm estimate for  ||F*wF I- I||^2/||I||^2 
+% * <Weighting/generateW_help.html generateW>  - generate weight matrix
+
+%% Copyright
+% Copyright (C) 2011, Xiaosheng Zhuang, University of Osnabrueck
+
+
+##### SOURCE END #####
+--></body></html>

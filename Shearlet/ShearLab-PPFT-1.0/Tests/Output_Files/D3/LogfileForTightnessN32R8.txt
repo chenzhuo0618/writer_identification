@@ -1,0 +1,16 @@
+Test Tightness: 
+N = 32, Iteration = 1 , MCE = 0.013368, Total Time = 0.19 sec
+N = 32, Iteration = 2 , MCE = 0.014345, Total Time = 0.16 sec
+N = 32, Iteration = 3 , MCE = 0.010827, Total Time = 0.19 sec
+N = 32, Iteration = 4 , MCE = 0.014330, Total Time = 0.18 sec
+N = 32, Iteration = 5 , MCE = 0.014107, Total Time = 0.19 sec
+Tight Frame Property(AdjointPPFT): Mtight1 = 0.014345
+
+N = 32, Iteration = 1 , MCE = 0.000003, CGits = 4, CGres = 8.157084E-009, Total Time = 0.72 sec
+N = 32, Iteration = 2 , MCE = 0.000003, CGits = 4, CGres = 6.818871E-009, Total Time = 0.75 sec
+N = 32, Iteration = 3 , MCE = 0.000003, CGits = 4, CGres = 7.074333E-009, Total Time = 0.73 sec
+N = 32, Iteration = 4 , MCE = 0.000002, CGits = 4, CGres = 4.951328E-009, Total Time = 0.73 sec
+N = 32, Iteration = 5 , MCE = 0.000003, CGits = 4, CGres = 8.340583E-009, Total Time = 0.77 sec
+Tight Frame Property(InvPPFT): Mtight2 = 2.780867E-006
+
+Elapsed time is 5.60 seconds

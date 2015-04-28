@@ -34,21 +34,18 @@ grid_train = [10]
 
 nb_split = 10; % number of split for classification
 
-
-
 % configure scattering
 options.J = 3; % number of octaves
 options.Q = 1; % number of scales per octave
 options.M = 2; % scattering orders
 fmt = 'table';
 M = options.M;
+
 % build the wavelet transform operators for scattering
 Wop = wavelet_factory_3d_pyramid(options, options, options);
 
 % a function handle that compute scattering given an image
 fun = @(x)(scat(x, Wop));
-
-
 
 %###############################Ìí¼Ó¶à³ß¶È
 %     multi_fun = @(filename)(fun_multiscale(fun,imreadBW(filename), 2, 3));

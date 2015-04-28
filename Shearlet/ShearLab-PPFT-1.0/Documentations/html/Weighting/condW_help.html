@@ -1,0 +1,202 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>CONDW</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-16"><meta name="m-file" content="condW_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>CONDW</h1><!--introduction--><p>condition number for the operator (F*wF - Id)||^2. Here F is the operator PPFT.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>Description<a name="1"></a></h2><pre>c = CONDW(N,R,BASISCHOICE) return the condition number for the
+operator (F^*wF-Id)</pre><h2>Examples<a name="2"></a></h2><pre class="codeinput">     N = 32;  R = 2; Choice = 1;
+     c = condW(N,R,Choice)
+</pre><pre class="codeoutput">k = 1; lmax = 0.99749; error = 0.021264
+k = 2; lmax = 0.99826; error = 0.018161
+k = 3; lmax = 0.99886; error = 0.016348
+k = 4; lmax = 0.99936; error = 0.015362
+k = 5; lmax = 0.99981; error = 0.014984
+k = 6; lmax = 1.0003; error = 0.015146
+k = 7; lmax = 1.0007; error = 0.015872
+k = 8; lmax = 1.0013; error = 0.017238
+k = 9; lmax = 1.002; error = 0.019347
+k = 10; lmax = 1.0028; error = 0.022314
+k = 11; lmax = 1.004; error = 0.026267
+k = 12; lmax = 1.0057; error = 0.03134
+k = 13; lmax = 1.0081; error = 0.037665
+k = 14; lmax = 1.0116; error = 0.045349
+k = 15; lmax = 1.0166; error = 0.054416
+k = 16; lmax = 1.0239; error = 0.06473
+k = 17; lmax = 1.0341; error = 0.075871
+k = 18; lmax = 1.0479; error = 0.087021
+k = 19; lmax = 1.0659; error = 0.096929
+k = 20; lmax = 1.0879; error = 0.10408
+k = 21; lmax = 1.1126; error = 0.10713
+k = 22; lmax = 1.1382; error = 0.10542
+k = 23; lmax = 1.1625; error = 0.099311
+k = 24; lmax = 1.1837; error = 0.089993
+k = 25; lmax = 1.2008; error = 0.078977
+k = 26; lmax = 1.2138; error = 0.067614
+k = 27; lmax = 1.2233; error = 0.056844
+k = 28; lmax = 1.23; error = 0.047182
+k = 29; lmax = 1.2345; error = 0.038824
+k = 30; lmax = 1.2376; error = 0.031763
+k = 31; lmax = 1.2397; error = 0.025891
+k = 32; lmax = 1.241; error = 0.021056
+k = 33; lmax = 1.2419; error = 0.017103
+k = 34; lmax = 1.2425; error = 0.013884
+k = 35; lmax = 1.2429; error = 0.011269
+k = 36; lmax = 1.2432; error = 0.0091479
+k = 37; lmax = 1.2433; error = 0.0074297
+k = 38; lmax = 1.2435; error = 0.0060381
+k = 39; lmax = 1.2435; error = 0.0049111
+k = 40; lmax = 1.2436; error = 0.0039983
+k = 41; lmax = 1.2436; error = 0.0032586
+k = 42; lmax = 1.2436; error = 0.0026589
+k = 43; lmax = 1.2437; error = 0.0021724
+k = 44; lmax = 1.2437; error = 0.0017775
+k = 45; lmax = 1.2437; error = 0.0014565
+k = 46; lmax = 1.2437; error = 0.0011955
+k = 47; lmax = 1.2437; error = 0.0009829
+k = 48; lmax = 1.2437; error = 0.00080958
+k = 49; lmax = 1.2437; error = 0.00066808
+k = 50; lmax = 1.2437; error = 0.00055239
+k = 1; lmin = 0.99538; error = 0.024626
+k = 2; lmin = 0.994; error = 0.028249
+k = 3; lmin = 0.99213; error = 0.033185
+k = 4; lmin = 0.98949; error = 0.039879
+k = 5; lmin = 0.9856; error = 0.049005
+k = 6; lmin = 0.9796; error = 0.061538
+k = 7; lmin = 0.97002; error = 0.078751
+k = 8; lmin = 0.9543; error = 0.10189
+k = 9; lmin = 0.92862; error = 0.13102
+k = 10; lmin = 0.88896; error = 0.16263
+k = 11; lmin = 0.83509; error = 0.1875
+k = 12; lmin = 0.77509; error = 0.194
+k = 13; lmin = 0.72202; error = 0.1783
+k = 14; lmin = 0.68383; error = 0.14861
+k = 15; lmin = 0.65998; error = 0.11651
+k = 16; lmin = 0.64615; error = 0.088843
+k = 17; lmin = 0.63831; error = 0.067352
+k = 18; lmin = 0.63383; error = 0.051325
+k = 19; lmin = 0.63122; error = 0.039467
+k = 20; lmin = 0.62967; error = 0.030626
+k = 21; lmin = 0.62874; error = 0.023948
+k = 22; lmin = 0.62816; error = 0.018836
+k = 23; lmin = 0.62781; error = 0.014878
+k = 24; lmin = 0.62758; error = 0.011787
+k = 25; lmin = 0.62744; error = 0.0093573
+k = 26; lmin = 0.62735; error = 0.0074391
+k = 27; lmin = 0.6273; error = 0.0059198
+k = 28; lmin = 0.62726; error = 0.004714
+k = 29; lmin = 0.62724; error = 0.0037555
+k = 30; lmin = 0.62723; error = 0.0029929
+k = 31; lmin = 0.62722; error = 0.0023857
+k = 32; lmin = 0.62721; error = 0.0019019
+k = 33; lmin = 0.62721; error = 0.0015164
+k = 34; lmin = 0.62721; error = 0.0012092
+k = 35; lmin = 0.6272; error = 0.00096427
+k = 36; lmin = 0.6272; error = 0.00076897
+k = 37; lmin = 0.6272; error = 0.00061325
+k = 38; lmin = 0.6272; error = 0.00048909
+k = 39; lmin = 0.6272; error = 0.00039008
+k = 40; lmin = 0.6272; error = 0.00031106
+k = 41; lmin = 0.6272; error = 0.00024814
+k = 42; lmin = 0.6272; error = 0.00019786
+k = 43; lmin = 0.6272; error = 0.00015786
+k = 44; lmin = 0.6272; error = 0.00012585
+k = 45; lmin = 0.6272; error = 0.00010044
+k = 46; lmin = 0.6272; error = 8.0035e-005
+k = 47; lmin = 0.6272; error = 6.3672e-005
+k = 48; lmin = 0.6272; error = 5.1067e-005
+k = 49; lmin = 0.6272; error = 4.0444e-005
+k = 50; lmin = 0.6272; error = 3.2586e-005
+
+c =
+
+    1.9829
+
+</pre><h2>See also<a name="3"></a></h2><p><a href="errorW_help.html">ERRORW</a>, <a href="errorW_random_help.html">ERRORW_RANDOM</a>, <a href="loadW_help.html">LOADW</a>, <a href="findWeight_help.html">FINDWEIGHTW</a>, <a href="WeightGenerate_help.html">WEIGHTGENERATE</a>, <a href="../PPFTs/ppFT_help.html">PPFT</a>, <a href="../PPFTs/AdjppFT_help.html">ADJPPFT</a>, <a href="basisFunction_help.html">BASISFUNCTION</a>, <a href="../Utilities/EigMaxMinFtCF_help.html">EIGMAXMINFTCF</a>.</p><h2>Copyright<a name="4"></a></h2><p>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% CONDW 
+% condition number for the operator (F*wF - Id)||^2. Here F is the operator PPFT.
+
+%% Description
+%  c = CONDW(N,R,BASISCHOICE) return the condition number for the
+%  operator (F^*wF-Id) 
+
+%% Examples
+     N = 32;  R = 2; Choice = 1;
+     c = condW(N,R,Choice)
+
+%% See also 
+% <errorW_help.html ERRORW>,
+% <errorW_random_help.html ERRORW_RANDOM>,
+% <loadW_help.html LOADW>,
+% <findWeight_help.html FINDWEIGHTW>,
+% <WeightGenerate_help.html WEIGHTGENERATE>,
+% <../PPFTs/ppFT_help.html PPFT>,
+% <../PPFTs/AdjppFT_help.html ADJPPFT>,
+% <basisFunction_help.html BASISFUNCTION>,
+% <../Utilities/EigMaxMinFtCF_help.html EIGMAXMINFTCF>.
+
+%% Copyright
+% Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+##### SOURCE END #####
+--></body></html>

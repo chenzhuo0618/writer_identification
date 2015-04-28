@@ -1,0 +1,24 @@
+Test Isometry: 
+
+N = 32, Iteration = 1, MCE1 = 0.010120  
+N = 32, Iteration = 2, MCE1 = 0.003814  
+N = 32, Iteration = 3, MCE1 = 0.009423  
+N = 32, Iteration = 4, MCE1 = 0.007616  
+N = 32, Iteration = 5, MCE1 = 0.007039  
+Closeness to tightness: Misom1 = 0.010120
+
+Now the Spread of the Eigenvectors! 
+First the computation of lmax! 
+Total Iters =    50, lmax =  1.158355180747, error =    0.0126874055 
+Now the computation of lmin! 
+Total Iters =    50, lmin =  0.873503191527, error =    0.0037648600 
+Quality of Preconditioning: Misom2 = 1.326103
+
+N = 32, Iteration = 1, MCE3 = 5.863855E-005, CGIts = 3, CGResidual = 3.825795E-006, CGSec = 0.07 
+N = 32, Iteration = 2, MCE3 = 3.626524E-005, CGIts = 3, CGResidual = 1.579071E-006, CGSec = 0.06 
+N = 32, Iteration = 3, MCE3 = 7.141696E-005, CGIts = 3, CGResidual = 5.489161E-006, CGSec = 0.06 
+N = 32, Iteration = 4, MCE3 = 3.137865E-005, CGIts = 3, CGResidual = 8.341289E-007, CGSec = 0.06 
+N = 32, Iteration = 5, MCE3 = 4.864056E-005, CGIts = 3, CGResidual = 2.380752E-006, CGSec = 0.06 
+Inverbility of PPFT: Misom3 = 7.141696E-005
+
+Elapsed time is 10.45 seconds

@@ -1,0 +1,39 @@
+Test Robustness: 
+N = 256, R=8
+Subtest Thresholding 1: 
+Percent = 75.00000000, Mthres1 =8.840277E-005  
+Percent = 93.75000000, Mthres1 =8.840731E-005  
+Percent = 98.43750000, Mthres1 =1.076497E-004  
+Percent = 99.60937500, Mthres1 =2.034668E-003  
+Percent = 99.90234375, Mthres1 =1.321382E-002  
+Percent = 99.97558594, Mthres1 =8.357198E-002  
+Percent = 99.99389648, Mthres1 =2.829235E-001  
+Percent = 99.99847412, Mthres1 =4.268495E-001  
+Percent = 99.99961853, Mthres1 =6.823006E-001  
+Percent = 99.99990463, Mthres1 =8.608381E-001  
+
+Subtest Thresholding 2: 
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 2.564833E-005, Mthres2 =1.475093E-003  
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 2.811562E-004, Mthres2 =1.325088E-002  
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 5.348991E-004, Mthres2 =2.616794E-002  
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 7.868893E-004, Mthres2 =4.002771E-002  
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 1.037139E-003, Mthres2 =5.510652E-002  
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 1.285660E-003, Mthres2 =7.192293E-002  
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 1.532464E-003, Mthres2 =8.662217E-002  
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 1.777564E-003, Mthres2 =1.065302E-001  
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 2.020970E-003, Mthres2 =1.205933E-001  
+MaxCoeff = 0.037016, MedianCoeff = 2.543729E-013, Threshold = 2.262695E-003, Mthres2 =1.343260E-001  
+
+Subtest Quantization: 
+Alphabet size = 0.001741, Mquant =4.966015E+000  
+Alphabet size = 0.002463, Mquant =4.963466E+000  
+Alphabet size = 0.003483, Mquant =4.945637E+000  
+Alphabet size = 0.004925, Mquant =4.942053E+000  
+Alphabet size = 0.006966, Mquant =4.940486E+000  
+Alphabet size = 0.009851, Mquant =4.928945E+000  
+Alphabet size = 0.013931, Mquant =4.926319E+000  
+Alphabet size = 0.019702, Mquant =4.767944E+000  
+Alphabet size = 0.027862, Mquant =4.625017E+000  
+Alphabet size = 0.039403, Mquant =4.913152E+000  
+
+Elapsed time is 220.26 seconds

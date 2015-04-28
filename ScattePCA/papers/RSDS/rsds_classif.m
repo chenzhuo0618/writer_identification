@@ -15,18 +15,19 @@ n_per_class = n_images / n_class; % assumes constant number of image per class
 
 rng(1); % set the random split generator of matlab to 
 % have reproducible results  
-
+K=1,V=3;
 for i_split = 1:nb_split
     for i_train = 1:numel(grid_train)
         n_train = grid_train(i_train);
         prop = n_train/n_per_class ;
         [train_set, test_set] = create_partition(db.src, prop);
         train_opt.dim = n_train;
-        model = affine_train(db, train_set, train_opt);
-        labels = affine_test(db, model, test_set);
+        model = affine_train(db, train_set, train_opt,K,V);
+        labels = affine_test(db, model, test_set,K,V);
         error(i_split, i_train) = classif_err(labels, test_set, db.src);
         fprintf('split %3d nb train %2d accuracy %.2f \n', ...
             i_split, n_train, 100*(1-error(i_split, i_train)));
+       K=K+1;
     end
 end
 

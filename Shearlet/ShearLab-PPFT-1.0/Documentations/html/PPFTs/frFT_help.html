@@ -1,0 +1,137 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>FRFT</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-15"><meta name="m-file" content="frFT_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>FRFT</h1><!--introduction--><p>fractional FFT, modified version of Miki Elad's code</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li><li><a href="#5">Update History</a></li></ul></div><h2>Description<a name="1"></a></h2><pre>Y = FRFT(X,ALPHA)
+    X is a N-by-1 column vector  or an N-by-s matrix
+    if X is a vector, perform FRFT on the vector with fraction alpha
+    if X is a matrix and alpha is a constant vector with the same column
+    size as X, then perform FRFT on each X(:,j)  with fraction
+    alpha(j). When alpha is a constant and X is a matrix, perform FRFT
+    on each X(:,j) with the same fraction alpha.</pre><pre>====================================================================
+Modefied version of Miki Elad's Fractional Fourier Transform, computing
+the transform</pre><pre>    y[n]=sum_{k=-N/2}^{N/2-1} x(k)*exp(-i*2*pi*k*n*alpha)  n=-N/2, ...,N/2-1</pre><pre>So that for alpha=1/N we get the regular FFT, and for alpha=-1/N we get
+the regular   IFFT.</pre><pre>Synopsis: y = frFT(x,alpha)</pre><pre>Inputs -   x - an N-entry vector to be transformed or an N-by-s matrix
+           alpha - the scaling factor (in the Pseudo-Polar it is in the range [-1/N,+1/N]</pre><pre>Outputs-   y - the transformed result as an N-entries vector</pre><pre>Written by Michael Elad on March 20th, 2005.
+====================================================================</pre><h2>Examples<a name="2"></a></h2><pre class="codeinput">         x     = randn(5,3);
+         alpha = [1/3,1/4,1/5];
+         y     = frFT(x,alpha);
+</pre><h2>See also<a name="3"></a></h2><p><a href="AdjfrFT_help.html">ADJFRFT</a>, <a href="ppFT_help.html">PPFT</a>, <a href="AdjppFT_help.html">ADJPPFT</a>, <a href="InvppFTCG_help.html">INVPPFTCG</a>.</p><h2>Copyright<a name="4"></a></h2><pre>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</pre><h2>Update History<a name="5"></a></h2><pre>modified by Morteza Shahram on Jan 30, 2008. make the index k symmetric,
+also change the code to the case where N can be an odd number
+modified by  Xiaosheng zhuang on Nov. 9, 2010. allowing input x to be an
+N-by-s matrix. Do the frft on each column</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% FRFT 
+% fractional FFT, modified version of Miki Elad's code
+%
+%% Description
+%  Y = FRFT(X,ALPHA) 
+%      X is a N-by-1 column vector  or an N-by-s matrix
+%      if X is a vector, perform FRFT on the vector with fraction alpha
+%      if X is a matrix and alpha is a constant vector with the same column
+%      size as X, then perform FRFT on each X(:,j)  with fraction
+%      alpha(j). When alpha is a constant and X is a matrix, perform FRFT
+%      on each X(:,j) with the same fraction alpha.
+%
+%  ====================================================================
+%  Modefied version of Miki Elad's Fractional Fourier Transform, computing 
+%  the transform
+%
+%      y[n]=sum_{k=-N/2}^{N/2-1} x(k)*exp(-i*2*pi*k*n*alpha)  n=-N/2, ...,N/2-1
+%
+%  So that for alpha=1/N we get the regular FFT, and for alpha=-1/N we get 
+%  the regular   IFFT.
+%
+%  Synopsis: y = frFT(x,alpha)
+%
+%  Inputs -   x - an N-entry vector to be transformed or an N-by-s matrix
+%             alpha - the scaling factor (in the Pseudo-Polar it is in the range [-1/N,+1/N]
+%
+%  Outputs-   y - the transformed result as an N-entries vector
+%
+%  Written by Michael Elad on March 20th, 2005.
+%  ====================================================================
+%  
+%% Examples
+         x     = randn(5,3);
+         alpha = [1/3,1/4,1/5];
+         y     = frFT(x,alpha);
+         
+%% See also
+% <AdjfrFT_help.html ADJFRFT>, 
+% <ppFT_help.html PPFT>, 
+% <AdjppFT_help.html ADJPPFT>, 
+% <InvppFTCG_help.html INVPPFTCG>.
+
+%% Copyright
+%  Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+%
+%% Update History
+%  modified by Morteza Shahram on Jan 30, 2008. make the index k symmetric,
+%  also change the code to the case where N can be an odd number
+%  modified by  Xiaosheng zhuang on Nov. 9, 2010. allowing input x to be an
+%  N-by-s matrix. Do the frft on each column
+
+##### SOURCE END #####
+--></body></html>

@@ -9,7 +9,7 @@
 % Output
 %    model: The affine space model.
 
-function model = affine_train(db,train_set,opt)
+function model = affine_train(db,train_set,opt,K,V)
 	if nargin < 3
 		opt = struct();
 	end
@@ -88,15 +88,18 @@ function model = affine_train(db,train_set,opt)
 %       As{k}=A;        
 %       v{k}=x;
 %       v{k}=x;
-        s = size(x);
-        s = max(s(1),s(2));
-        lambda = 1./sqrt(s);
-        tol = 1e-7; % for ALM
-        maxIter = 10000; % for ALM
-        [A_hat E_hat iter] = inexact_alm_rpca(single(x), lambda, tol, maxIter);
-% %         
-% %     [s,ind]=sort(diag(A_hat),'descend');     
-       v{k}=A_hat;
+    mean_x = mean(x, 1);
+	X = bsxfun(@minus, x, mean_x);    
+        [mappedA, mapping]=compute_mapping(X,'KPCA',size(X,2),'gauss',K,V);
+%         s = size(x);
+%         s = max(s(1),s(2));
+%         lambda = 1./sqrt(s);
+%         tol = 1e-7; % for ALM
+%         maxIter = 10000; % for ALM
+%         [A_hat E_hat iter] = inexact_alm_rpca(single(x), lambda, tol, maxIter);
+% % %         
+% % %     [s,ind]=sort(diag(A_hat),'descend');     
+%        v{k}=A_hat;
 %         
 % 		v{k} = sig_pca(x,0);
 %         v{k}=rand(109,8);
@@ -119,6 +122,8 @@ function model = affine_train(db,train_set,opt)
 % 		end
 %%%%
 % 		v{k} = sig_pca(db.features(:,ind_feat),0);
+        v{k} = mapping.V;
+%         v{k} = mapping.M;
 		if size(v{k},2) > max(opt.dim)
 			v{k} = v{k}(:,1:max(opt.dim));
 		end

@@ -1,0 +1,133 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>GETSHEARLET</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-20"><meta name="m-file" content="GetShearlet_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>GETSHEARLET</h1><!--introduction--><pre>what a shearlet look like</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">DESCRIPTION</a></li><li><a href="#2">EXAMPLE</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>DESCRIPTION<a name="1"></a></h2><pre>  [X,Y] = GETSHEARLET(N,R,BETA,SECTOR,SCALE,SHEAR)
+  Input
+    N     - original image size
+    R     - oversampling rate
+    beta  - scaling factor
+    sector- which sector(1,2,3,4)
+    scale - which scale (level)
+    sher  - shearing parameter
+  Ouput
+    X - shearlet in time domain
+    Y - shearlet in frequency domain</pre><h2>EXAMPLE<a name="2"></a></h2><pre class="codeinput">      N = 256; R = 8; beta = 4; sector = 1; scale = 3; shear = 0;
+      [X, Y] = GetShearlet(N,R,beta,sector, scale, shear);
+      figure(1);
+      subplot(1,2,1), imagesc(abs(X));
+      subplot(1,2,2), imagesc(abs(Y));
+</pre><pre class="codeoutput">Decomposition of high-frequency part...
+scale = 4, Number of Tiles = 33
+scale = 3, Number of Tiles = 17
+scale = 2, Number of Tiles = 9
+scale = 1, Number of Tiles = 5
+scale = 0, Number of Tiles = 3
+scale = -1, Number of Tiles = 1
+Decomposition of low frequency part...
+Done!
+Reconstruction from high-frequency part...
+scale = 4, Number of Tiles = 33
+scale = 3, Number of Tiles = 17
+scale = 2, Number of Tiles = 9
+scale = 1, Number of Tiles = 5
+scale = 0, Number of Tiles = 3
+scale = -1, Number of Tiles = 1
+Reconstrucion from low frequency part...
+Done!
+</pre><img vspace="5" hspace="5" src="GetShearlet_help_01.png" alt=""> <h2>See also<a name="3"></a></h2><p><a href="../Windowing/WindowOnPPGrid_help.html">WINDOWONPPGRID</a>, <a href="../Windowing/AdjWindowOnPPGrid_help.html">ADJWINDOWONPPGRID</a></p><h2>Copyright<a name="4"></a></h2><pre> Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% GETSHEARLET 
+%  what a shearlet look like
+%
+%% DESCRIPTION
+%    [X,Y] = GETSHEARLET(N,R,BETA,SECTOR,SCALE,SHEAR)
+%    Input
+%      N     - original image size
+%      R     - oversampling rate
+%      beta  - scaling factor
+%      sector- which sector(1,2,3,4)
+%      scale - which scale (level)
+%      sher  - shearing parameter
+%    Ouput
+%      X - shearlet in time domain
+%      Y - shearlet in frequency domain
+%
+%% EXAMPLE
+      N = 256; R = 8; beta = 4; sector = 1; scale = 3; shear = 0;
+      [X, Y] = GetShearlet(N,R,beta,sector, scale, shear); 
+      figure(1);
+      subplot(1,2,1), imagesc(abs(X));
+      subplot(1,2,2), imagesc(abs(Y)); 
+
+%% See also 
+% <../Windowing/WindowOnPPGrid_help.html WINDOWONPPGRID>,
+% <../Windowing/AdjWindowOnPPGrid_help.html ADJWINDOWONPPGRID>
+
+%% Copyright
+%   Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,137 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>SHEARLETTRANSFORM</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-21"><meta name="m-file" content="ShearletTransform_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>SHEARLETTRANSFORM</h1><!--introduction--><p>Digital Shearlet Transform (W sqrt(w) P)X W is the windowing, w is the weight operator, and P is the ppft operator</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Desscription</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>Desscription<a name="1"></a></h2><p>SHX = SHEARLETTRANSFORM_XZ(X,R,BETA,WEIGHT,LEVEL) Input:</p><pre>   X     - square N*N matrix  N dyadic</pre><pre>   R     - oversamping rate, 2,4,8,16.</pre><pre>   beta  - 2 or 4;</pre><pre>   w     - Wegithing Matrix, size: 2*(R*N+1)*(N+1) must be nonnegative</pre><pre>   level - decomposition level, level =0 means decompose to the lowest possible level</pre><p>Output:</p><pre>   ShX shearlet_coeff : shearlet coefficients (cell structure)</pre><h2>Examples<a name="2"></a></h2><pre class="codeinput">  tic
+  img = imread(<span class="string">'barbara.gif'</span>);
+  img = double(img);
+  N   = size(img,1); beta = 4;
+  R   = 4; basisChoice  = 5;
+  w   = generateW(N,R,basisChoice);
+  shX = ShearletTransform(img, R, beta, w, 0);
+  toc
+</pre><pre class="codeoutput">Forward Shearlet Transform...
+ppFT ...
+Weighting ...
+Windowing ...
+Decomposition of high-frequency part...
+scale = 5, Number of Tiles = 65
+scale = 4, Number of Tiles = 33
+scale = 3, Number of Tiles = 17
+scale = 2, Number of Tiles = 9
+scale = 1, Number of Tiles = 5
+scale = 0, Number of Tiles = 3
+scale = -1, Number of Tiles = 1
+Decomposition of low frequency part...
+Done!
+Done with Forward Shearlet Transform!
+Elapsed time is 3.434457 seconds.
+</pre><h2>See also<a name="3"></a></h2><p><a href="AdjShearletTransform_help.html">ADJSHEARLETTRANSFORM</a>, <a href="InvShearletTransform_help.html">INVSHEARLETTRANSFORM</a>, <a href="../PPFTs/ppFT_help.html">PPFT</a>, <a href="../PPFTs/AdjppFT_help.html">ADJPPFT</a>, <a href="../PPFTs/InvppFTCG_help.html">INVPPFTCG</a>, <a href="../Windowing/WindowOnPPGrid_help.html"> WINDOWONPPGRID</a> <a href="../Windowing/AdjWindowOnPPGrid_help.html"> ADJWINDOWONPPGRID</a> <a href="../Weighting/generateW_help.html"> GENERATEW</a></p><h2>Copyright<a name="4"></a></h2><p>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% SHEARLETTRANSFORM 
+% Digital Shearlet Transform (W sqrt(w) P)X
+% W is the windowing, w is the weight operator, and P is the ppft operator
+%
+%% Desscription
+% SHX = SHEARLETTRANSFORM_XZ(X,R,BETA,WEIGHT,LEVEL)
+% Input:
+%
+%     X     - square N*N matrix  N dyadic
+%
+%     R     - oversamping rate, 2,4,8,16.
+%
+%     beta  - 2 or 4;
+%
+%     w     - Wegithing Matrix, size: 2*(R*N+1)*(N+1) must be nonnegative
+%
+%     level - decomposition level, level =0 means decompose to the lowest possible level
+%
+% Output:
+%
+%     ShX shearlet_coeff : shearlet coefficients (cell structure)
+%
+%% Examples
+  tic
+  img = imread('barbara.gif');
+  img = double(img);
+  N   = size(img,1); beta = 4;
+  R   = 4; basisChoice  = 5;
+  w   = generateW(N,R,basisChoice);
+  shX = ShearletTransform(img, R, beta, w, 0);
+  toc
+%% See also
+% <AdjShearletTransform_help.html ADJSHEARLETTRANSFORM>,
+% <InvShearletTransform_help.html INVSHEARLETTRANSFORM>,
+% <../PPFTs/ppFT_help.html PPFT>,
+% <../PPFTs/AdjppFT_help.html ADJPPFT>,
+% <../PPFTs/InvppFTCG_help.html INVPPFTCG>,
+% <../Windowing/WindowOnPPGrid_help.html  WINDOWONPPGRID>
+% <../Windowing/AdjWindowOnPPGrid_help.html  ADJWINDOWONPPGRID>
+% <../Weighting/generateW_help.html  GENERATEW>
+
+%% Copyright
+% Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+##### SOURCE END #####
+--></body></html>

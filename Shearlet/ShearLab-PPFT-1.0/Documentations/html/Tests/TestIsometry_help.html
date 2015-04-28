@@ -1,0 +1,106 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>TESTISOMETRY</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-18"><meta name="m-file" content="TestIsometry_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>TESTISOMETRY</h1><!--introduction--><p>Test Isometry of PPFT</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">See also</a></li><li><a href="#3">Copyright</a></li></ul></div><h2>Description<a name="1"></a></h2><pre>OUTPUT_TESTISOMETRY=TESTISOMETRY(N,R,CHOICE,POWERM,REPS,LFILE)
+   Generate images I_1,...,I_REPS of size N,
+   oversampling rate R, basis CHOICE (see basisFunction), and
+   randomly wth normally distributed entires. Compute</pre><pre>   M_{isom_1} = \max_{i=1...reps} norm(P^\star w PI_i-I_i,'fro')/norm(I_i,'fro').</pre><pre>   M_{isom_2} = cond(P^\star w P);</pre><pre>   M_{isom_3} = \max_{i=1...reps}norm(CG(I_i)-I_i,'fro')/norm(I_i,'fro');</pre><pre>   Here P is the PPFT operator, w is the weighting matrix on ppgrid.
+   see PPFT, ADJPPFT, GENERATEW.</pre><h2>See also<a name="2"></a></h2><p><a href="TestAlgExact_help.html"> TestAlgExact</a>, <a href="TestGeomExact_help.html"> TestGeomExact</a>, <a href="TestPackage_help.html">TestPackage</a>, <a href="TestQuantization_help.html">TestQuantization</a>, <a href="TestRobustness_help.html">TestRobustness</a>, <a href="TestShearInvariance_help.html"> TestShearInvariance</a>, <a href="TestSpeed_help.html">TestSpeed</a>, <a href="TestThresholding_help.html">TestThresholding</a>, <a href="TestTightness_help.html">TestTightness</a>, <a href="TestTimeFreqLoc_help.html">TestTimeFreqLoc</a></p><h2>Copyright<a name="3"></a></h2><pre> Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% TESTISOMETRY 
+% Test Isometry of PPFT
+%
+%% Description
+%  OUTPUT_TESTISOMETRY=TESTISOMETRY(N,R,CHOICE,POWERM,REPS,LFILE)
+%     Generate images I_1,...,I_REPS of size N,
+%     oversampling rate R, basis CHOICE (see basisFunction), and 
+%     randomly wth normally distributed entires. Compute
+%
+%     M_{isom_1} = \max_{i=1...reps} norm(P^\star w PI_i-I_i,'fro')/norm(I_i,'fro').
+%
+%     M_{isom_2} = cond(P^\star w P);
+%
+%     M_{isom_3} = \max_{i=1...reps}norm(CG(I_i)-I_i,'fro')/norm(I_i,'fro');
+%
+%     Here P is the PPFT operator, w is the weighting matrix on ppgrid.
+%     see PPFT, ADJPPFT, GENERATEW.
+%
+%% See also 
+% <TestAlgExact_help.html  TestAlgExact>,
+% <TestGeomExact_help.html  TestGeomExact>,
+% <TestPackage_help.html TestPackage>,
+% <TestQuantization_help.html TestQuantization>,
+% <TestRobustness_help.html TestRobustness>,
+% <TestShearInvariance_help.html  TestShearInvariance>,
+% <TestSpeed_help.html TestSpeed>,
+% <TestThresholding_help.html TestThresholding>,
+% <TestTightness_help.html TestTightness>,
+% <TestTimeFreqLoc_help.html TestTimeFreqLoc>
+%
+%% Copyright
+%   Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+##### SOURCE END #####
+--></body></html>

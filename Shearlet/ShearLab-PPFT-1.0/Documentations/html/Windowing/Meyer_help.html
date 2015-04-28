@@ -1,0 +1,130 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>MEYER</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-17"><meta name="m-file" content="Meyer_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>MEYER</h1><!--introduction--><p>Meyer scaling and Wavelet function</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li><li><a href="#5">Upadate History</a></li></ul></div><h2>Description<a name="1"></a></h2><pre>y = Meyer(a,b,x,type)
+  1. 0 &lt; a &lt; b are two parameters, m = sqrt(a*b);
+  2. x =[v1,v2,...] are sampling points of real numbers.
+  3. if type == 'wavelet'
+      y = sin(pi/2*nv((abs(x)-a)/(m-a))) for a &lt;= abs(x) &lt;= m;
+      y = cos(pi/2*nv((abs(x)-m)/(b-m))) for m &lt;= abs(x) &lt;= b;
+      y = 0                             for x otherwise.
+  4. if type == 'scaling'
+      y = 1;                            for abs(x) &lt;=a;
+      y = cos(pi/2*nv((abs(x)-a)/(m-a)));for a &lt; abs(x) &lt;= m;
+      y = 0;                            for x otherwise.
+  5. nv(x) is any function s.t. nv(x)+nv(1-x) = 1 for |x|&lt;=1, e.g.,
+      nv = 0;           for x &lt;= 0;
+      nv = 2*x^2;       for 0 &lt; x &lt; 1/2;
+      nv = 1-2*(1-x)^2; for 1/2 &lt;x&lt; 1;
+      nv = 1          ; for x &gt;=1</pre><h2>Examples<a name="2"></a></h2><pre class="codeinput">      a  = 1/4; b = 4;
+      x  = [-4:0.1:4];
+      ys = Meyer(a,b,x,<span class="string">'scaling'</span>);
+      yw = Meyer(a,b,x,<span class="string">'wavelet'</span>);
+      plot(x,ys,x,yw,x,ys.^2+yw.^2);
+</pre><img vspace="5" hspace="5" src="Meyer_help_01.png" alt=""> <h2>See also<a name="3"></a></h2><p><a href="bumpV_help.html">BUMPV</a>, <a href="nv_help.html">NV</a>, <a href="ParaScale_help.html">PARASCALE</a>, <a href="WindowOnPPGrid_help.html">WINDOWONPPGRID</a>. <a href="AdjWindowOnPPGrid_help.html">ADJWINDOWONPPGRID</a>.</p><h2>Copyright<a name="4"></a></h2><pre>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</pre><h2>Upadate History<a name="5"></a></h2><pre>Modified by Xiaosheng Zhuang on Nov. 11, 2010</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% MEYER 
+% Meyer scaling and Wavelet function
+%
+%% Description
+%  y = Meyer(a,b,x,type)
+%    1. 0 < a < b are two parameters, m = sqrt(a*b);
+%    2. x =[v1,v2,...] are sampling points of real numbers.
+%    3. if type == 'wavelet'
+%        y = sin(pi/2*nv((abs(x)-a)/(m-a))) for a <= abs(x) <= m;
+%        y = cos(pi/2*nv((abs(x)-m)/(b-m))) for m <= abs(x) <= b;
+%        y = 0                             for x otherwise.
+%    4. if type == 'scaling'
+%        y = 1;                            for abs(x) <=a;
+%        y = cos(pi/2*nv((abs(x)-a)/(m-a)));for a < abs(x) <= m;
+%        y = 0;                            for x otherwise.
+%    5. nv(x) is any function s.t. nv(x)+nv(1-x) = 1 for |x|<=1, e.g.,
+%        nv = 0;           for x <= 0;
+%        nv = 2*x^2;       for 0 < x < 1/2;
+%        nv = 1-2*(1-x)^2; for 1/2 <x< 1;
+%        nv = 1          ; for x >=1
+
+%% Examples
+      a  = 1/4; b = 4;
+      x  = [-4:0.1:4];
+      ys = Meyer(a,b,x,'scaling');
+      yw = Meyer(a,b,x,'wavelet');
+      plot(x,ys,x,yw,x,ys.^2+yw.^2);
+
+%% See also 
+% <bumpV_help.html BUMPV>, 
+% <nv_help.html NV>, 
+% <ParaScale_help.html PARASCALE>, 
+% <WindowOnPPGrid_help.html WINDOWONPPGRID>.
+% <AdjWindowOnPPGrid_help.html ADJWINDOWONPPGRID>.
+
+%% Copyright
+%  Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+%% Upadate History
+%  Modified by Xiaosheng Zhuang on Nov. 11, 2010
+
+##### SOURCE END #####
+--></body></html>

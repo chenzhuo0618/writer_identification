@@ -1,0 +1,12 @@
+Test Time Frequency Localization: 
+N = 256, R = 8, beta = 4, scale = 2, sector = 1, shear = 0
+
+Decay Rate in Spatial Domain = -0.999726
+
+Compactly Supportedness in Frequency Domain = 8.978126E-002
+Decay Rate in Frequency Domain = -2.621014
+
+Holder Regulairty in Time Domain = 1.170936
+Holder Regularity in Frequency Domain = 0.629610
+
+Elapsed time is 19.87 seconds

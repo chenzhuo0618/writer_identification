@@ -1,0 +1,118 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>INVFTCF</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-15"><meta name="m-file" content="InvFtCF_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>INVFTCF</h1><!--introduction--><pre> inverse of FtCF.</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li></ul></div><h2>Description<a name="1"></a></h2><pre> Here F denotes the operator of the pseudo-polar transform and
+ C is the weights on the pseudo-polar grid. Ft is F^* -- the adjoint.</pre><pre> X = INVFTCF(Y,K,C) slove the matrix inverse proble A X = Y with A being
+ the operator F^*CF, where F is the pseudo-polar transform operator, C
+ is the weighting matrix, and F^* is the adjoint of F. Use conjugate
+ gradient method.</pre><h2>Examples<a name="2"></a></h2><pre class="codeinput">       n  = 20; R = 2;
+       x0 = randn(n);
+       C  = ones(2,R*n+1,n+1);
+       y  = ppFT(x0,R);
+       b  = AdjppFT(y.*C,R);
+       x  = InvFtCF(b,n,C);
+       err= norm(x-x0,<span class="string">'fro'</span>)/norm(x0,<span class="string">'fro'</span>)
+</pre><pre class="codeoutput">
+err =
+
+    0.0219
+
+</pre><h2>See also<a name="3"></a></h2><p><a href="ppFT_help.html">PPFT</a>, <a href="AdjppFT_help.html">ADJPPFT</a>, <a href="FtCF_help.html">FTCF</a>, <a href="InvppFTCG_help.html">INVPPFTCG</a>.</p><pre class="codeinput"><span class="comment">%  Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</span>
+</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% INVFTCF 
+%   inverse of FtCF.   
+%
+%% Description 
+%   Here F denotes the operator of the pseudo-polar transform and
+%   C is the weights on the pseudo-polar grid. Ft is F^* REPLACE_WITH_DASH_DASH the adjoint.
+%
+%   X = INVFTCF(Y,K,C) slove the matrix inverse proble A X = Y with A being
+%   the operator F^*CF, where F is the pseudo-polar transform operator, C
+%   is the weighting matrix, and F^* is the adjoint of F. Use conjugate
+%   gradient method.
+% 
+%% Examples
+       n  = 20; R = 2;
+       x0 = randn(n);
+       C  = ones(2,R*n+1,n+1);
+       y  = ppFT(x0,R);
+       b  = AdjppFT(y.*C,R);      
+       x  = InvFtCF(b,n,C);
+       err= norm(x-x0,'fro')/norm(x0,'fro')
+
+%% See also 
+% <ppFT_help.html PPFT>, 
+% <AdjppFT_help.html ADJPPFT>, 
+% <FtCF_help.html FTCF>,
+% <InvppFTCG_help.html INVPPFTCG>.
+
+%  Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+
+
+
+##### SOURCE END #####
+--></body></html>

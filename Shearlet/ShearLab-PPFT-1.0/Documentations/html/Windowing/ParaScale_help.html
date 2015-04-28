@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>PARASCALE</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-17"><meta name="m-file" content="ParaScale_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>PARASCALE</h1><!--introduction--><p>return numbers of tiles for scale based on dilation beta</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>Description<a name="1"></a></h2><pre>Ntile = ParaScale(scale,beta)
+  if scale &lt; 0 return 0;
+  if scale &gt;=0 and beta == 2 return 2^[scale/2];
+  if scale &gt;=0 and beta == 4 return 2^scale;
+total tiles = [-Ntile:Ntile]</pre><h2>Examples<a name="2"></a></h2><pre class="codeinput">     ParaScale(-1,2)
+     ParaScale(2, 4)
+</pre><pre class="codeoutput">
+ans =
+
+     0
+
+
+ans =
+
+     4
+
+</pre><h2>See also<a name="3"></a></h2><p><a href="meyer_help.html">MEYER</a>, <a href="bumpV_help.html">BUMPV</a>, <a href="nv_help.html">NV</a>, <a href="WindowOnPPGrid_help.html">WINDOWONPPGRID</a>. <a href="AdjWindowOnPPGrid_help.html">ADJWINDOWONPPGRID</a>.</p><h2>Copyright<a name="4"></a></h2><p>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% PARASCALE 
+% return numbers of tiles for scale based on dilation beta
+%
+%% Description
+%  Ntile = ParaScale(scale,beta)
+%    if scale < 0 return 0;
+%    if scale >=0 and beta == 2 return 2^[scale/2];
+%    if scale >=0 and beta == 4 return 2^scale;
+%  total tiles = [-Ntile:Ntile]
+%
+%% Examples
+     ParaScale(-1,2)
+     ParaScale(2, 4)
+
+%% See also   
+% <meyer_help.html MEYER>, 
+% <bumpV_help.html BUMPV>, 
+% <nv_help.html NV>, 
+% <WindowOnPPGrid_help.html WINDOWONPPGRID>.
+% <AdjWindowOnPPGrid_help.html ADJWINDOWONPPGRID>.
+
+
+%% Copyright
+% Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+##### SOURCE END #####
+--></body></html>

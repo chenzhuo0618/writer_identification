@@ -1,0 +1,9 @@
+Test Shear Invariance: 
+N = 128, R = 8, beta = 4, slope = 0.5
+
+Shear Invariance: Scale =1, Mshear = 8.885732E-005
+Shear Invariance: Scale =2, Mshear = 9.643749E-004
+Shear Invariance: Scale =3, Mshear = 4.937673E-003
+Shear Invariance: Scale =4, Mshear = 1.244313E-003
+
+Elapsed time is 4.01 seconds

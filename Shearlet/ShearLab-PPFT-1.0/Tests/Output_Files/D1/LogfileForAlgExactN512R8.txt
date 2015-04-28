@@ -1,0 +1,14 @@
+Test Algebraic Exactness: 
+N = 512, Iteration = 1, MCE = 6.641811E-016 
+N = 512, Iteration = 2, MCE = 6.643863E-016 
+N = 512, Iteration = 3, MCE = 6.642374E-016 
+N = 512, Iteration = 4, MCE = 6.642235E-016 
+N = 512, Iteration = 5, MCE = 6.642781E-016 
+N = 512, Iteration = 6, MCE = 6.642354E-016 
+N = 512, Iteration = 7, MCE = 6.640245E-016 
+N = 512, Iteration = 8, MCE = 6.641544E-016 
+N = 512, Iteration = 9, MCE = 6.639347E-016 
+N = 512, Iteration = 10, MCE = 6.640467E-016 
+M_alg = 6.643863E-016 
+
+Elapsed time is 58.07 seconds

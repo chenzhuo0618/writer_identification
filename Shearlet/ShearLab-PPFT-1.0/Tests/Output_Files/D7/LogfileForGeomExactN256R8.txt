@@ -1,0 +1,15 @@
+Test Geometric Exactness: 
+N = 256, R = 8, beta = 4
+
+s=-1.000000
+s=-0.500000
+s=0.000000
+s=0.500000
+s=1.000000
+s=0.500000
+s=0.000000
+s=-0.500000
+Decay for Significant Coefficient Aligned with Line = -1.352757
+Decay for Insignificant Coefficient = -2.032056
+
+Elapsed time is 26.95 seconds

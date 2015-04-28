@@ -1,0 +1,178 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>EIGMAXMINFTCF</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-20"><meta name="m-file" content="EigMaxMinFtCF_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>EIGMAXMINFTCF</h1><!--introduction--><p>condition number of P^\star w P using power method</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">DESCRIPTION</a></li><li><a href="#2">EXAMPLE</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>DESCRIPTION<a name="1"></a></h2><pre> [LMAX,LMIN]=EIGMAXMINFTCF(W,K,LFILE)
+ Compute the maximal and minimal eigenvalues of the operator
+                   P^\star w P
+ P is the pseudo-polar trasnform, see PPFT.
+ w is the weights on PP grid.
+ Input
+      W - the weighting matrix.
+      K - maximimal number of iterations in Power method
+  lfile - file handle. Write the result in a log file
+ Ouput
+      lmax - maximal eigenvalue
+      lmin - minimal eigenvalue</pre><h2>EXAMPLE<a name="2"></a></h2><pre class="codeinput">      N = 32; R = 2; Choice = 1;
+      W = generateW(N,R,Choice);
+      [lmax,lmin] = EigMaxMinFtCF(W,N);
+</pre><pre class="codeoutput">k = 1; lmax = 0.99825; error = 0.02047
+k = 2; lmax = 0.99912; error = 0.021398
+k = 3; lmax = 1.0001; error = 0.023487
+k = 4; lmax = 1.0014; error = 0.026786
+k = 5; lmax = 1.0031; error = 0.031382
+k = 6; lmax = 1.0054; error = 0.037375
+k = 7; lmax = 1.0088; error = 0.044851
+k = 8; lmax = 1.0138; error = 0.053829
+k = 9; lmax = 1.0209; error = 0.064176
+k = 10; lmax = 1.0309; error = 0.075483
+k = 11; lmax = 1.0447; error = 0.086935
+k = 12; lmax = 1.0626; error = 0.097258
+k = 13; lmax = 1.0847; error = 0.10487
+k = 14; lmax = 1.1099; error = 0.10831
+k = 15; lmax = 1.1361; error = 0.10683
+k = 16; lmax = 1.1611; error = 0.10075
+k = 17; lmax = 1.1828; error = 0.091278
+k = 18; lmax = 1.2004; error = 0.08
+k = 19; lmax = 1.2137; error = 0.068343
+k = 20; lmax = 1.2234; error = 0.057297
+k = 21; lmax = 1.2301; error = 0.047405
+k = 22; lmax = 1.2347; error = 0.038867
+k = 23; lmax = 1.2378; error = 0.031673
+k = 24; lmax = 1.2398; error = 0.025706
+k = 25; lmax = 1.2412; error = 0.020809
+k = 26; lmax = 1.242; error = 0.016816
+k = 27; lmax = 1.2426; error = 0.013575
+k = 28; lmax = 1.243; error = 0.010951
+k = 29; lmax = 1.2432; error = 0.00883
+k = 30; lmax = 1.2434; error = 0.0071181
+k = 31; lmax = 1.2435; error = 0.0057373
+k = 32; lmax = 1.2436; error = 0.004624
+k = 1; lmin = 0.99765; error = 0.01735
+k = 2; lmin = 0.99691; error = 0.021319
+k = 3; lmin = 0.99569; error = 0.028302
+k = 4; lmin = 0.99338; error = 0.040182
+k = 5; lmin = 0.98847; error = 0.059496
+k = 6; lmin = 0.97757; error = 0.089251
+k = 7; lmin = 0.9539; error = 0.1313
+k = 8; lmin = 0.9077; error = 0.18098
+k = 9; lmin = 0.83564; error = 0.21956
+k = 10; lmin = 0.75523; error = 0.2219
+k = 11; lmin = 0.69304; error = 0.1861
+k = 12; lmin = 0.65729; error = 0.13616
+k = 13; lmin = 0.64019; error = 0.092387
+k = 14; lmin = 0.63271; error = 0.06063
+k = 15; lmin = 0.62955; error = 0.039368
+k = 16; lmin = 0.62822; error = 0.025591
+k = 17; lmin = 0.62766; error = 0.016774
+k = 18; lmin = 0.62742; error = 0.011149
+k = 19; lmin = 0.62731; error = 0.0075511
+k = 20; lmin = 0.62726; error = 0.0052326
+k = 21; lmin = 0.62723; error = 0.0037187
+k = 22; lmin = 0.62722; error = 0.0027102
+k = 23; lmin = 0.62721; error = 0.0020209
+k = 24; lmin = 0.62721; error = 0.0015359
+k = 25; lmin = 0.6272; error = 0.0011846
+k = 26; lmin = 0.6272; error = 0.0009235
+k = 27; lmin = 0.6272; error = 0.0007254
+k = 28; lmin = 0.6272; error = 0.0005726
+k = 29; lmin = 0.6272; error = 0.00045372
+k = 30; lmin = 0.6272; error = 0.00036033
+k = 31; lmin = 0.6272; error = 0.0002866
+k = 32; lmin = 0.6272; error = 0.00022818
+</pre><h2>See also<a name="3"></a></h2><p><a href="../PPFTs/ppFT_help.html">PPFT</a>, <a href="../PPFTs/AdjppFT_help.html">ADJPPFT</a>, <a href="../PPFTs/FtCF_help.html">FTCF</a></p><h2>Copyright<a name="4"></a></h2><pre> Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% EIGMAXMINFTCF 
+% condition number of P^\star w P using power method
+% 
+%% DESCRIPTION
+%   [LMAX,LMIN]=EIGMAXMINFTCF(W,K,LFILE)
+%   Compute the maximal and minimal eigenvalues of the operator 
+%                     P^\star w P
+%   P is the pseudo-polar trasnform, see PPFT.
+%   w is the weights on PP grid.
+%   Input
+%        W - the weighting matrix.
+%        K - maximimal number of iterations in Power method
+%    lfile - file handle. Write the result in a log file
+%   Ouput
+%        lmax - maximal eigenvalue
+%        lmin - minimal eigenvalue
+%
+%% EXAMPLE
+      N = 32; R = 2; Choice = 1;
+      W = generateW(N,R,Choice);
+      [lmax,lmin] = EigMaxMinFtCF(W,N);
+
+%% See also 
+% <../PPFTs/ppFT_help.html PPFT>,
+% <../PPFTs/AdjppFT_help.html ADJPPFT>,
+% <../PPFTs/FtCF_help.html FTCF>
+
+%% Copyright
+%   Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+   
+
+##### SOURCE END #####
+--></body></html>

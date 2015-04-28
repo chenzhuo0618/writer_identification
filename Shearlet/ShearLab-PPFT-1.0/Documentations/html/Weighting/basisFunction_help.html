@@ -1,0 +1,147 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>BASISFUNCTION</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2011-02-16"><meta name="m-file" content="basisFunction_help"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>BASISFUNCTION</h1><!--introduction--><p>generate basis functions on a pseudo-polar grid</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Examples</a></li><li><a href="#3">See also</a></li><li><a href="#4">Copyright</a></li></ul></div><h2>Description<a name="1"></a></h2><p>P = BASISFUNCTION(N,R,CHOICE) generate basis functions on a pseudo-polar grid depending on the parameter CHOICE, N is the size of original image, R is the oversampling rate.</p><p>CHOICE = 1    bases: 1-origin, 2-first line, 3-seam line (`*`|x`|`), 4-corner point,    5-interior (`*`|x`|), 6-boundary line, 7-corner point on seam line at -3    position.</p><p>CHOICE = 2    bases: 1-origin, 2-first k0 lines, 3-interior after first k0 lines    (`*`|x`|), 4-seam line (`*`|x`|,include first k0 points), 5-boundary line.</p><p>CHOICE = 3    bases: 1-origin, 2-first k0 lines, 3-interior after first k0    lines`*`|x`|, 4-seam line (`*`|x`|,exclude first k0 points), 5-boundary line.</p><p>CHOICE = 4    bases: 1-origin, 2-first k0 lines, 3-interior after first k0 lines    (`*`|x`|), 4-seam line (`*`|x`|,include first k0 points), 5-boundary line.</p><p>CHOICE = 5    bases: 1-origin, 2-corner point, 3-interior (`*`|x`|), 4-seam line (`*`|x`|)    , 5-boundary line.</p><p>CHOICE = 6    bases: 1-origin, 2-first k0 line interior (`*`|x`|^alpha), 3-after first    k0 line interior (`*`|x`|^beta), 4-seam line (`*`|x`|^gamma), 5-boundary line    , 6-corner point.</p><p>CHOICE = 7    bases: 1-origin, 2-first slope line (slope=0), 3-second slope line    (slope = 1/(N/2)),..., and last slope line (slope = 1).</p><p>CHOICE = 8    bases: 1-origin, 2-first k0 line interior (`*`|x`|), 3-after first    k0 line interior (`*`|x`|), 4-first k0 point seam line (`*`|x`|), 5-after    first k0 point seam line (`*`|x`|), 6-corner point, 7-boundary line.</p><p>CHOICE = 9    bases: 1-origin, 2-first line, 3-interior, 4-first k0 points seam line (`*`|x`|),    5-after first k0 points seam line (`*`|x`|), 6-corner point,    7-boundary line.</p><p>CHOICE = 10    bases: 1-origin, 2-first line, 3-first k0 line interior (exclude first    line `*`|x`|), 4-after first k0 line interior (`*`|x`|), 5-first k0 points    seam line (`*`|x`|), 6-after first k0 points seam line (`*`|x`|),    7-boundary line, 8-corner point.</p><p>CHOICE = 11    bases: 1-origin, 2-interior, 3-first k0 point seam line, 4-after first    k0 point seam line, 5-boundary line, 6-corner point.</p><p>CHOICE = 12    bases: 1-origin, 2-interior, 3-seam line.</p><h2>Examples<a name="2"></a></h2><pre class="codeinput">    N = 128; R=4; Choice = 5;
+    P = basisFunction(N,R,Choice);
+</pre><h2>See also<a name="3"></a></h2><p><a href="../Utilities/getppCoordinate_help.html">GETPPCOORDINATES</a>, <a href="findWeight_help.html">FINDWEIGHT</a>, <a href="WeightGenerate_help.html">WEIGHTGENERATE</a>, <a href="loadW_help.html">loadW</a>, <a href="saveW_help.html">saveW</a>.</p><h2>Copyright<a name="4"></a></h2><p>Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+%% BASISFUNCTION 
+% generate basis functions on a pseudo-polar grid
+
+%% Description
+% P = BASISFUNCTION(N,R,CHOICE) generate basis functions on a pseudo-polar
+% grid depending on the parameter CHOICE, N is the size of original image,
+% R is the oversampling rate.
+%
+% CHOICE = 1
+%    bases: 1-origin, 2-first line, 3-seam line (`*`|x`|`), 4-corner point,
+%    5-interior (`*`|x`|), 6-boundary line, 7-corner point on seam line at -3
+%    position.
+%
+% CHOICE = 2
+%    bases: 1-origin, 2-first k0 lines, 3-interior after first k0 lines
+%    (`*`|x`|), 4-seam line (`*`|x`|,include first k0 points), 5-boundary line.
+%
+% CHOICE = 3
+%    bases: 1-origin, 2-first k0 lines, 3-interior after first k0
+%    lines`*`|x`|, 4-seam line (`*`|x`|,exclude first k0 points), 5-boundary line.
+%
+% CHOICE = 4
+%    bases: 1-origin, 2-first k0 lines, 3-interior after first k0 lines
+%    (`*`|x`|), 4-seam line (`*`|x`|,include first k0 points), 5-boundary line.
+%
+% CHOICE = 5
+%    bases: 1-origin, 2-corner point, 3-interior (`*`|x`|), 4-seam line (`*`|x`|)
+%    , 5-boundary line. 
+%
+% CHOICE = 6
+%    bases: 1-origin, 2-first k0 line interior (`*`|x`|^alpha), 3-after first
+%    k0 line interior (`*`|x`|^beta), 4-seam line (`*`|x`|^gamma), 5-boundary line 
+%    , 6-corner point.
+%
+% CHOICE = 7
+%    bases: 1-origin, 2-first slope line (slope=0), 3-second slope line
+%    (slope = 1/(N/2)),..., and last slope line (slope = 1).
+%
+% CHOICE = 8
+%    bases: 1-origin, 2-first k0 line interior (`*`|x`|), 3-after first
+%    k0 line interior (`*`|x`|), 4-first k0 point seam line (`*`|x`|), 5-after
+%    first k0 point seam line (`*`|x`|), 6-corner point, 7-boundary line.
+%
+% CHOICE = 9
+%    bases: 1-origin, 2-first line, 3-interior, 4-first k0 points seam line (`*`|x`|), 
+%    5-after first k0 points seam line (`*`|x`|), 6-corner point,
+%    7-boundary line.
+%
+% CHOICE = 10
+%    bases: 1-origin, 2-first line, 3-first k0 line interior (exclude first
+%    line `*`|x`|), 4-after first k0 line interior (`*`|x`|), 5-first k0 points 
+%    seam line (`*`|x`|), 6-after first k0 points seam line (`*`|x`|), 
+%    7-boundary line, 8-corner point.
+%
+% CHOICE = 11
+%    bases: 1-origin, 2-interior, 3-first k0 point seam line, 4-after first
+%    k0 point seam line, 5-boundary line, 6-corner point.
+%
+% CHOICE = 12
+%    bases: 1-origin, 2-interior, 3-seam line.
+
+%% Examples
+    N = 128; R=4; Choice = 5;
+    P = basisFunction(N,R,Choice);
+    
+%% See also 
+% <../Utilities/getppCoordinate_help.html GETPPCOORDINATES>, 
+% <findWeight_help.html FINDWEIGHT>,
+% <WeightGenerate_help.html WEIGHTGENERATE>,
+% <loadW_help.html loadW>,
+% <saveW_help.html saveW>.
+
+
+%% Copyright
+% Copyright (C) 2011. Xiaosheng Zhuang, University of Osnabrueck
+
+##### SOURCE END #####
+--></body></html>
